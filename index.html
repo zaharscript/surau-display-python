@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mosque Digital Display</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Montserrat:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="display-container">
+        <!-- Background Overlay -->
+        <div class="bg-overlay"></div>
+
+        <!-- Header: Mosque Info -->
+        <header class="main-header">
+            <div class="logo-area">
+                <img src="img/logo.jpg" alt="Surau Seri Dahlia Logo" class="mosque-logo">
+                <div class="mosque-titles">
+                    <h1 class="english-name">Surau Seri Dahlia</h1>
+                    <h2 class="arabic-name">سوراو سري داهليا</h2>
+                </div>
+            </div>
+            <div class="date-time-weather">
+                <div class="gregorian-date" id="gregorian-date">--</div>
+                <div class="hijri-date" id="hijri-date">--</div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Left: Live Clock & Countdown -->
+            <section class="clock-section">
+                <div class="live-clock-container">
+                    <div id="clock" class="digital-clock">00:00:00</div>
+                    <div class="period" id="ampm">AM</div>
+                </div>
+                <div class="next-prayer-card">
+                    <h3>Next Prayer</h3>
+                    <div id="next-prayer-name" class="next-name">--</div>
+                    <div id="countdown" class="countdown-timer">00:00:00</div>
+                </div>
+
+                <!-- Advertisement -->
+                <div class="advertisement">
+                    <!-- Ad 1: Halal Restaurant -->
+                    <div class="ad-slide ad1 active">
+                        <h3>🌟 Community Support 🌟</h3>
+                        <div class="ad-content">
+                            <div class="ad-highlight">Halal Restaurant & Catering</div>
+                            <div>Delicious Middle Eastern Cuisine</div>
+                            <div style="margin: 10px 0;">Special 15% Discount for Masjid Members</div>
+                            <div class="ad-contact">📞 Call: (555) 777-8888</div>
+                            <div class="ad-contact">🌐 www.halaldelights.com</div>
+                        </div>
+                    </div>
+
+                    <!-- Ad 2: Islamic School -->
+                    <div class="ad-slide ad2">
+                        <h3>📚 Islamic Education 📚</h3>
+                        <div class="ad-content">
+                            <div class="ad-highlight">Al-Iman Islamic School</div>
+                            <div>Quran, Arabic & Islamic Studies</div>
+                            <div style="margin: 10px 0;">Weekend Classes for Ages 5-15</div>
+                            <div style="margin: 8px 0;">Registration Now Open!</div>
+                            <div class="ad-contact">📞 (555) 888-9999</div>
+                        </div>
+                    </div>
+
+                    <!-- Ad 3: Hajj & Umrah Travel -->
+                    <div class="ad-slide ad3">
+                        <h3>✈️ Hajj & Umrah Services ✈️</h3>
+                        <div class="ad-content">
+                            <div class="ad-highlight">Sacred Journey Travel</div>
+                            <div>Premium Hajj & Umrah Packages</div>
+                            <div style="margin: 10px 0;">Early Bird Discount - Book Now!</div>
+                            <div style="margin: 8px 0;">Expert Guidance & VIP Services</div>
+                            <div class="ad-contact">📞 (555) 123-7777</div>
+                        </div>
+                    </div>
+
+                    <!-- Ad 4: Islamic Bookstore -->
+                    <div class="ad-slide ad4">
+                        <h3>📖 Knowledge Corner 📖</h3>
+                        <div class="ad-content">
+                            <div class="ad-highlight">Nur Islamic Bookstore</div>
+                            <div>Qurans, Books, Prayer Items & Gifts</div>
+                            <div style="margin: 10px 0;">20% OFF All Islamic Books This Month</div>
+                            <div class="ad-contact">📍 Next to Masjid Parking</div>
+                            <div class="ad-contact">📞 (555) 456-7890</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Center: Weekly Activities -->
+            <section class="activities-section">
+                <div class="activities-header">
+                    <h2><i class="fa-solid fa-calendar-days"></i> JADUAL AKTIVITI MINGGUAN</h2>
+                    <p>Surau Seri Dahlia, Bandar Seri Putra</p>
+                </div>
+
+                <div class="activities-content">
+                    <!-- Thursday -->
+                    <div class="activity-group">
+                        <div class="box">
+                            <img src="img/ustaz/ustaz.png" class="group-ustaz-img" alt="Ustaz">
+                        </div>
+
+                        <div class="activity-date">
+                            <span class="day-badge">Khamis</span>
+                            <span class="date-text">22 Januari 2026</span>
+                        </div>
+                        <div class="activity-item">
+                            <div class="act-icon"><i class="fa-solid fa-book-quran"></i></div>
+                            <div class="act-details">
+                                <div class="act-title">Bacaan Yasin & Tahlil</div>
+                                <div class="act-lead">Imam Surau</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="act-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+                            <div class="act-details">
+                                <div class="act-title">Kelas Al-Quran</div>
+                                <div class="act-lead">Ustaz Hj. Rasyidi</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Friday -->
+                    <div class="activity-group">
+                        <img src="img/ustaz/ustaz2.jpeg" class="group-ustaz-img" alt="Ustaz">
+                        <div class="activity-date">
+                            <span class="day-badge">Jumaat</span>
+                            <span class="date-text">23 Januari 2026</span>
+                        </div>
+                        <div class="activity-item">
+                            <div class="act-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                            <div class="act-details">
+                                <div class="act-title">Kelas Tajwid (Selepas Isyak)</div>
+                                <div class="act-lead">Tuan Haji Ramli</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Saturday -->
+                    <div class="activity-group">
+                        <img src="img/ustaz/ustaz3.jpg" class="group-ustaz-img" alt="Ustaz">
+                        <div class="activity-date">
+                            <span class="day-badge">Sabtu</span>
+                            <span class="date-text">24 Januari 2026</span>
+                        </div>
+                        <div class="activity-item">
+                            <div class="act-icon"><i class="fa-solid fa-sun"></i></div>
+                            <div class="act-details">
+                                <div class="act-title">Kuliah Subuh</div>
+                                <div class="act-lead">Ustaz Dr. Jamir</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="act-icon"><i class="fa-solid fa-language"></i></div>
+                            <div class="act-details">
+                                <div class="act-title">Kelas Bahasa Arab</div>
+                                <div class="act-lead">Ustaz Fandy</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sunday -->
+                    <div class="activity-group">
+                        <img src="img/ustaz/ustaz4.png" class="group-ustaz-img" alt="Ustaz">
+                        <div class="activity-date">
+                            <span class="day-badge">Ahad</span>
+                            <span class="date-text">25 Januari 2026</span>
+                        </div>
+                        <div class="activity-item">
+                            <div class="act-icon"><i class="fa-solid fa-sun"></i></div>
+                            <div class="act-details">
+                                <div class="act-title">Kuliah Subuh</div>
+                                <div class="act-lead">Ustaz Sirajuddin</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="act-icon"><i class="fa-solid fa-child-reaching"></i></div>
+                            <div class="act-details">
+                                <div class="act-title">Kelas Mengaji (Kanak-Kanak)</div>
+                                <div class="act-meta"><i class="fa-regular fa-clock"></i> 9.00 Pagi</div>
+                                <div class="act-lead">Imam & AJK Surau</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="act-icon"><i class="fa-solid fa-users-rays"></i></div>
+                            <div class="act-details">
+                                <div class="act-title">Majlis Selawat & Munajat</div>
+                                <div class="act-lead">Ustaz Ahmad Syawal</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Monday -->
+                    <div class="activity-group">
+                        <img src="img/ustaz/ustaz5.jpg" class="group-ustaz-img" alt="Ustaz">
+                        <div class="activity-date">
+                            <span class="day-badge">Isnin</span>
+                            <span class="date-text">26 Januari 2026</span>
+                        </div>
+                        <div class="activity-item">
+                            <div class="act-icon"><i class="fa-solid fa-cloud-moon"></i></div>
+                            <div class="act-details">
+                                <div class="act-title">Kuliah Maghrib</div>
+                                <div class="act-lead">Ustaz Hasbullah</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notice -->
+                    <div class="notice-card">
+                        <div class="notice-header"><i class="fa-solid fa-hands-holding-circle"></i> Makluman Jemaah
+                        </div>
+                        <p>Sesiapa yang berhajat untuk mengadakan Doa Selamat atau Tahlil, sila maklumkan kepada Imam
+                            Surau atau AJK Surau.</p>
+                        <p class="highlight">Sumbangan infak makanan amatlah dialu-alukan.<br>✨ Semoga menjadi amal
+                            jariah kita bersama.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right: Prayer Times List -->
+            <section class="prayer-times-section">
+                <div class="prayer-card" id="fajr-card">
+                    <div class="prayer-info">
+                        <span class="prayer-name-en">Fajr</span>
+                        <span class="prayer-name-ar">الفجر</span>
+                    </div>
+                    <div class="prayer-time" id="fajr-time">--:--</div>
+                    <div class="iqamah-time">Iqamah: <span id="fajr-iqamah">--:--</span></div>
+                </div>
+
+                <div class="prayer-card" id="sunrise-card">
+                    <div class="prayer-info">
+                        <span class="prayer-name-en">Syuruq</span>
+                        <span class="prayer-name-ar">الشروق</span>
+                    </div>
+                    <div class="prayer-time" id="sunrise-time">--:--</div>
+                </div>
+
+                <div class="prayer-card" id="dhuhr-card">
+                    <div class="prayer-info">
+                        <span class="prayer-name-en">Dhuhr</span>
+                        <span class="prayer-name-ar">الظهر</span>
+                    </div>
+                    <div class="prayer-time" id="dhuhr-time">--:--</div>
+                    <div class="iqamah-time">Iqamah: <span id="dhuhr-iqamah">--:--</span></div>
+                </div>
+
+                <div class="prayer-card" id="asr-card">
+                    <div class="prayer-info">
+                        <span class="prayer-name-en">Asr</span>
+                        <span class="prayer-name-ar">العصر</span>
+                    </div>
+                    <div class="prayer-time" id="asr-time">--:--</div>
+                    <div class="iqamah-time">Iqamah: <span id="asr-iqamah">--:--</span></div>
+                </div>
+
+                <div class="prayer-card" id="maghrib-card">
+                    <div class="prayer-info">
+                        <span class="prayer-name-en">Maghrib</span>
+                        <span class="prayer-name-ar">المغرب</span>
+                    </div>
+                    <div class="prayer-time" id="maghrib-time">--:--</div>
+                    <div class="iqamah-time">Iqamah: <span id="maghrib-iqamah">--:--</span></div>
+                </div>
+
+                <div class="prayer-card" id="isha-card">
+                    <div class="prayer-info">
+                        <span class="prayer-name-en">Isha</span>
+                        <span class="prayer-name-ar">العشاء</span>
+                    </div>
+                    <div class="prayer-time" id="isha-time">--:--</div>
+                    <div class="iqamah-time">Iqamah: <span id="isha-iqamah">--:--</span></div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer: Ticker & Info -->
+        <footer class="main-footer">
+            <div class="ticker-wrap">
+                <div class="ticker">
+                    <div class="ticker-item">Welcome to Surau Seri Dahlia. Please silence your mobile phones.</div>
+                    <div class="ticker-item">Jumu'ah Prayer Khutbah starts at 1:15 PM.</div>
+                    <div class="ticker-item">Donations for the new carpet fund are welcome.</div>
+                </div>
+            </div>
+            <div class="contact-info">
+                <span><i class="fa-solid fa-location-dot"></i> Pangsapuri Seri Dahlia, Bandar Seri Putra, Kajang</span>
+                <span><i class="fa-solid fa-phone"></i> 012-3456789</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
