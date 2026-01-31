@@ -46,19 +46,43 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Helper to convert image to Base64
+    const toBase64 = file => new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+    });
+
     // Form Submission
-    activityForm.addEventListener('submit', (e) => {
+    activityForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         const formData = new FormData(activityForm);
         const data = Object.fromEntries(formData.entries());
 
-        console.log('Activity Data Submitted:', data);
-        alert('Aktiviti berjaya didaftarkan! (Development Mode: Check console for data)');
+        // Handle optional image
+        const imageFile = gambarInput.files[0];
+        if (imageFile) {
+            try {
+                data.imageData = await toBase64(imageFile);
+            } catch (err) {
+                console.error("Error converting image:", err);
+            }
+        }
 
-        // Optional: Reset form or redirect
-        activityForm.reset();
-        hariDisp.textContent = '-';
-        fileName.textContent = 'Tiada fail dipilih';
+        // Add timestamp for sorting
+        data.id = Date.now();
+        data.timestamp = new Date().toISOString();
+
+        // Save to localStorage
+        const existingActivities = JSON.parse(localStorage.getItem('surau_activities') || '[]');
+        existingActivities.push(data);
+        localStorage.setItem('surau_activities', JSON.stringify(existingActivities));
+
+        alert('Aktiviti berjaya didaftarkan!');
+
+        // Redirect to main page
+        window.location.href = 'index.html';
     });
 });

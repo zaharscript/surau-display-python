@@ -31,6 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Initialize Advertisement Rotator
         initAdRotator();
+
+        // Initialize Dynamic Activities
+        initActivities();
     }
 
     function updateClock() {
@@ -252,20 +255,92 @@ document.addEventListener('DOMContentLoaded', () => {
 
         setInterval(() => {
             // Current slide exits
-            slides[currentSlide].classList.remove('active');
-            slides[currentSlide].classList.add('exit');
+            if (slides[currentSlide]) {
+                slides[currentSlide].classList.remove('active');
+                slides[currentSlide].classList.add('exit');
+                const prevSlide = currentSlide;
+                currentSlide = (currentSlide + 1) % slides.length;
 
-            const prevSlide = currentSlide;
-            currentSlide = (currentSlide + 1) % slides.length;
+                // Next slide enters
+                slides[currentSlide].classList.remove('exit');
+                slides[currentSlide].classList.add('active');
 
-            // Next slide enters
-            slides[currentSlide].classList.remove('exit');
-            slides[currentSlide].classList.add('active');
-
-            // Reset previous slide after transition
-            setTimeout(() => {
-                slides[prevSlide].classList.remove('exit');
-            }, 800); // Matches transition duration
+                // Reset previous slide after transition
+                setTimeout(() => {
+                    slides[prevSlide].classList.remove('exit');
+                }, 800); // Matches transition duration
+            }
         }, slideInterval);
+    }
+
+    function initActivities() {
+        const activitiesContent = document.querySelector('.activities-content');
+        if (!activitiesContent) return;
+
+        // Load from localStorage
+        const storedActivities = JSON.parse(localStorage.getItem('surau_activities') || '[]');
+
+        if (storedActivities.length > 0) {
+            // Clear existing hardcoded activities if we have stored ones
+            activitiesContent.innerHTML = '';
+
+            // Sort by date (Tarikh)
+            storedActivities.sort((a, b) => new Date(a.tarikh) - new Date(b.tarikh));
+
+            // Group by date to match HTML structure
+            const grouped = storedActivities.reduce((acc, act) => {
+                if (!acc[act.tarikh]) acc[act.tarikh] = [];
+                acc[act.tarikh].push(act);
+                return acc;
+            }, {});
+
+            for (const [date, acts] of Object.entries(grouped)) {
+                const groupDiv = document.createElement('div');
+                groupDiv.className = 'activity-group';
+
+                // Format the long date for display
+                const dateObj = new Date(date);
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                const formattedDate = dateObj.toLocaleDateString('ms-MY', options);
+
+                // Use image from first activity in group or default
+                const imageSrc = acts[0].imageData || 'img/ustaz/ustaz.png';
+
+                groupDiv.innerHTML = `
+                    <div class="box">
+                        <img src="${imageSrc}" class="group-ustaz-img" alt="Ustaz">
+                    </div>
+                    <div class="activity-date">
+                        <span class="day-badge">${acts[0].hari}</span>
+                        <span class="date-text">${formattedDate}</span>
+                    </div>
+                `;
+
+                acts.forEach(act => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'activity-item';
+
+                    // Pick icon based on keywords
+                    let icon = 'fa-calendar-check';
+                    const title = act.acara.toLowerCase();
+                    if (title.includes('quran') || title.includes('mengaji')) icon = 'fa-book-quran';
+                    else if (title.includes('kelas') || title.includes('kuliah')) icon = 'fa-chalkboard-user';
+                    else if (title.includes('yasin') || title.includes('tahlil')) icon = 'fa-book-open-reader';
+                    else if (title.includes('maghrib') || title.includes('isya')) icon = 'fa-cloud-moon';
+                    else if (title.includes('subuh')) icon = 'fa-sun';
+
+                    itemDiv.innerHTML = `
+                        <div class="act-icon"><i class="fa-solid ${icon}"></i></div>
+                        <div class="act-details">
+                            <div class="act-title">${act.acara} ${act.masa ? `(${act.masa})` : ''}</div>
+                            <div class="act-lead">${act.oleh}</div>
+                        </div>
+                    `;
+                    groupDiv.appendChild(itemDiv);
+                });
+
+                activitiesContent.appendChild(groupDiv);
+            }
+        }
     }
 });
