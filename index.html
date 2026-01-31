@@ -55,63 +55,73 @@
                     <div id="countdown" class="countdown-timer">00:00:00</div>
                 </div>
 
-                <!-- Advertisement -->
-                <div class="advertisement">
-                    <!-- Ad 1: Halal Restaurant -->
-                    <div class="ad-slide ad1 active">
-                        <h3>🌟 Community Support 🌟</h3>
-                        <div class="ad-content">
-                            <div class="ad-highlight">Halal Restaurant & Catering</div>
-                            <div>Delicious Middle Eastern Cuisine</div>
-                            <div style="margin: 10px 0;">Special 15% Discount for Masjid Members</div>
-                            <div class="ad-contact">📞 Call: (555) 777-8888</div>
-                            <div class="ad-contact">🌐 www.halaldelights.com</div>
+                <!-- Right: Prayer Times List -->
+                <section class="prayer-times-section">
+                    <div class="prayer-card" id="fajr-card">
+                        <div class="prayer-info">
+                            <span class="prayer-name-en">Fajr</span>
+                            <span class="prayer-name-ar">الفجر</span>
                         </div>
+                        <div class="prayer-time" id="fajr-time">--:--</div>
+                        <div class="iqamah-time">Iqamah: <span id="fajr-iqamah">--:--</span></div>
                     </div>
 
-                    <!-- Ad 2: Islamic School -->
-                    <div class="ad-slide ad2">
-                        <h3>📚 Islamic Education 📚</h3>
-                        <div class="ad-content">
-                            <div class="ad-highlight">Al-Iman Islamic School</div>
-                            <div>Quran, Arabic & Islamic Studies</div>
-                            <div style="margin: 10px 0;">Weekend Classes for Ages 5-15</div>
-                            <div style="margin: 8px 0;">Registration Now Open!</div>
-                            <div class="ad-contact">📞 (555) 888-9999</div>
+                    <div class="prayer-card" id="sunrise-card">
+                        <div class="prayer-info">
+                            <span class="prayer-name-en">Syuruq</span>
+                            <span class="prayer-name-ar">الشروق</span>
                         </div>
+                        <div class="prayer-time" id="sunrise-time">--:--</div>
                     </div>
 
-                    <!-- Ad 3: Hajj & Umrah Travel -->
-                    <div class="ad-slide ad3">
-                        <h3>✈️ Hajj & Umrah Services ✈️</h3>
-                        <div class="ad-content">
-                            <div class="ad-highlight">Sacred Journey Travel</div>
-                            <div>Premium Hajj & Umrah Packages</div>
-                            <div style="margin: 10px 0;">Early Bird Discount - Book Now!</div>
-                            <div style="margin: 8px 0;">Expert Guidance & VIP Services</div>
-                            <div class="ad-contact">📞 (555) 123-7777</div>
+                    <div class="prayer-card" id="dhuhr-card">
+                        <div class="prayer-info">
+                            <span class="prayer-name-en">Dhuhr</span>
+                            <span class="prayer-name-ar">الظهر</span>
                         </div>
+                        <div class="prayer-time" id="dhuhr-time">--:--</div>
+                        <div class="iqamah-time">Iqamah: <span id="dhuhr-iqamah">--:--</span></div>
                     </div>
 
-                    <!-- Ad 4: Islamic Bookstore -->
-                    <div class="ad-slide ad4">
-                        <h3>📖 Knowledge Corner 📖</h3>
-                        <div class="ad-content">
-                            <div class="ad-highlight">Nur Islamic Bookstore</div>
-                            <div>Qurans, Books, Prayer Items & Gifts</div>
-                            <div style="margin: 10px 0;">20% OFF All Islamic Books This Month</div>
-                            <div class="ad-contact">📍 Next to Masjid Parking</div>
-                            <div class="ad-contact">📞 (555) 456-7890</div>
+                    <div class="prayer-card" id="asr-card">
+                        <div class="prayer-info">
+                            <span class="prayer-name-en">Asr</span>
+                            <span class="prayer-name-ar">العصر</span>
                         </div>
+                        <div class="prayer-time" id="asr-time">--:--</div>
+                        <div class="iqamah-time">Iqamah: <span id="asr-iqamah">--:--</span></div>
                     </div>
-                </div>
+
+                    <div class="prayer-card" id="maghrib-card">
+                        <div class="prayer-info">
+                            <span class="prayer-name-en">Maghrib</span>
+                            <span class="prayer-name-ar">المغرب</span>
+                        </div>
+                        <div class="prayer-time" id="maghrib-time">--:--</div>
+                        <div class="iqamah-time">Iqamah: <span id="maghrib-iqamah">--:--</span></div>
+                    </div>
+
+                    <div class="prayer-card" id="isha-card">
+                        <div class="prayer-info">
+                            <span class="prayer-name-en">Isha</span>
+                            <span class="prayer-name-ar">العشاء</span>
+                        </div>
+                        <div class="prayer-time" id="isha-time">--:--</div>
+                        <div class="iqamah-time">Iqamah: <span id="isha-iqamah">--:--</span></div>
+                    </div>
+                </section>
             </section>
 
             <!-- Center: Weekly Activities -->
             <section class="activities-section">
                 <div class="activities-header">
-                    <h2><i class="fa-solid fa-calendar-days"></i> JADUAL AKTIVITI MINGGUAN</h2>
-                    <p>Surau Seri Dahlia, Bandar Seri Putra</p>
+                    <div class="header-main">
+                        <h2><i class="fa-solid fa-calendar-days"></i> JADUAL AKTIVITI MINGGUAN</h2>
+                        <p>Surau Seri Dahlia, Bandar Seri Putra</p>
+                    </div>
+                    <a href="activity_form.html" class="add-activity-btn" title="Tambah Aktiviti">
+                        <i class="fa-solid fa-plus"></i> Add
+                    </a>
                 </div>
 
                 <div class="activities-content">
@@ -239,61 +249,56 @@
                 </div>
             </section>
 
-            <!-- Right: Prayer Times List -->
-            <section class="prayer-times-section">
-                <div class="prayer-card" id="fajr-card">
-                    <div class="prayer-info">
-                        <span class="prayer-name-en">Fajr</span>
-                        <span class="prayer-name-ar">الفجر</span>
+            <!-- Advertisement -->
+            <div class="advertisement">
+                <!-- Ad 1: Halal Restaurant -->
+                <div class="ad-slide ad1 active">
+                    <h3>🌟 Community Support 🌟</h3>
+                    <div class="ad-content">
+                        <div class="ad-highlight">Halal Restaurant & Catering</div>
+                        <div>Delicious Middle Eastern Cuisine</div>
+                        <div style="margin: 10px 0;">Special 15% Discount for Masjid Members</div>
+                        <div class="ad-contact">📞 Call: (555) 777-8888</div>
+                        <div class="ad-contact">🌐 www.halaldelights.com</div>
                     </div>
-                    <div class="prayer-time" id="fajr-time">--:--</div>
-                    <div class="iqamah-time">Iqamah: <span id="fajr-iqamah">--:--</span></div>
                 </div>
 
-                <div class="prayer-card" id="sunrise-card">
-                    <div class="prayer-info">
-                        <span class="prayer-name-en">Syuruq</span>
-                        <span class="prayer-name-ar">الشروق</span>
+                <!-- Ad 2: Islamic School -->
+                <div class="ad-slide ad2">
+                    <h3>📚 Islamic Education 📚</h3>
+                    <div class="ad-content">
+                        <div class="ad-highlight">Al-Iman Islamic School</div>
+                        <div>Quran, Arabic & Islamic Studies</div>
+                        <div style="margin: 10px 0;">Weekend Classes for Ages 5-15</div>
+                        <div style="margin: 8px 0;">Registration Now Open!</div>
+                        <div class="ad-contact">📞 (555) 888-9999</div>
                     </div>
-                    <div class="prayer-time" id="sunrise-time">--:--</div>
                 </div>
 
-                <div class="prayer-card" id="dhuhr-card">
-                    <div class="prayer-info">
-                        <span class="prayer-name-en">Dhuhr</span>
-                        <span class="prayer-name-ar">الظهر</span>
+                <!-- Ad 3: Hajj & Umrah Travel -->
+                <div class="ad-slide ad3">
+                    <h3>✈️ Hajj & Umrah Services ✈️</h3>
+                    <div class="ad-content">
+                        <div class="ad-highlight">Sacred Journey Travel</div>
+                        <div>Premium Hajj & Umrah Packages</div>
+                        <div style="margin: 10px 0;">Early Bird Discount - Book Now!</div>
+                        <div style="margin: 8px 0;">Expert Guidance & VIP Services</div>
+                        <div class="ad-contact">📞 (555) 123-7777</div>
                     </div>
-                    <div class="prayer-time" id="dhuhr-time">--:--</div>
-                    <div class="iqamah-time">Iqamah: <span id="dhuhr-iqamah">--:--</span></div>
                 </div>
 
-                <div class="prayer-card" id="asr-card">
-                    <div class="prayer-info">
-                        <span class="prayer-name-en">Asr</span>
-                        <span class="prayer-name-ar">العصر</span>
+                <!-- Ad 4: Islamic Bookstore -->
+                <div class="ad-slide ad4">
+                    <h3>📖 Knowledge Corner 📖</h3>
+                    <div class="ad-content">
+                        <div class="ad-highlight">Nur Islamic Bookstore</div>
+                        <div>Qurans, Books, Prayer Items & Gifts</div>
+                        <div style="margin: 10px 0;">20% OFF All Islamic Books This Month</div>
+                        <div class="ad-contact">📍 Next to Masjid Parking</div>
+                        <div class="ad-contact">📞 (555) 456-7890</div>
                     </div>
-                    <div class="prayer-time" id="asr-time">--:--</div>
-                    <div class="iqamah-time">Iqamah: <span id="asr-iqamah">--:--</span></div>
                 </div>
-
-                <div class="prayer-card" id="maghrib-card">
-                    <div class="prayer-info">
-                        <span class="prayer-name-en">Maghrib</span>
-                        <span class="prayer-name-ar">المغرب</span>
-                    </div>
-                    <div class="prayer-time" id="maghrib-time">--:--</div>
-                    <div class="iqamah-time">Iqamah: <span id="maghrib-iqamah">--:--</span></div>
-                </div>
-
-                <div class="prayer-card" id="isha-card">
-                    <div class="prayer-info">
-                        <span class="prayer-name-en">Isha</span>
-                        <span class="prayer-name-ar">العشاء</span>
-                    </div>
-                    <div class="prayer-time" id="isha-time">--:--</div>
-                    <div class="iqamah-time">Iqamah: <span id="isha-iqamah">--:--</span></div>
-                </div>
-            </section>
+            </div>
         </main>
 
         <!-- Footer: Ticker & Info -->

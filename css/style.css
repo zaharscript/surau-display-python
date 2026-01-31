@@ -229,6 +229,40 @@ body {
     border-bottom: 1px solid var(--primary-gold);
     padding-bottom: 1rem;
     margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.activities-header .header-main {
+    flex: 1;
+    text-align: center;
+}
+
+.add-activity-btn {
+    background-color: var(--accent-emerald);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(16, 185, 129, 0.3);
+}
+
+.add-activity-btn:hover {
+    background-color: #0d9668;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.5);
+}
+
+.add-activity-btn:active {
+    transform: translateY(0);
 }
 
 .activities-header h2 {
@@ -379,9 +413,19 @@ body {
     margin-bottom: 0;
 }
 
-/* Right Section: Prayer Times Grid */
+/* Left Section: Prayer Times Grid (Modified to fit Clock Section) */
 .prayer-times-section {
-    flex: 1.2;
+    width: 100%;
+    max-width: 420px;
+    height: 520px;
+    background: var(--glass-bg);
+    border: 1px solid var(--primary-gold);
+    border-radius: 20px;
+    padding: 1.2rem;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -513,12 +557,9 @@ body {
     }
 }
 
-/* Advertisement Section */
+/* Advertisement Section (Modified to be the Right Column) */
 .advertisement {
-
-    width: 100%;
-    max-width: 420px;
-    height: 520px;
+    flex: 1.2;
     background: linear-gradient(180deg,
             rgba(15, 23, 42, 0.85),
             rgba(15, 23, 42, 0.65));

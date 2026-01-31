@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surau Seri Dahlia - Weekly Activity Form</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Amiri:wght@400;700&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/activity_form.css">
+</head>
+
+<body>
+    <div class="form-wrapper">
+        <header class="form-header">
+            <div class="logo-box">
+                <img src="img/logo.jpg" alt="Surau Logo" class="form-logo">
+            </div>
+            <div class="header-text">
+                <h1 class="main-title">Surau Seri Dahlia</h1>
+                <h2 class="sub-title">Maklumat Aktiviti Mingguan</h2>
+            </div>
+        </header>
+
+        <form id="activityForm" class="activity-form">
+            <div class="form-group row">
+                <label for="tarikh">Tarikh</label>
+                <div class="input-container">
+                    <input type="date" id="tarikh" name="tarikh" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label>Hari</label>
+                <div class="input-container">
+                    <span id="hariDisp" class="hari-display">-</span>
+                    <input type="hidden" id="hari" name="hari">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="masa">Masa (Optional)</label>
+                <div class="input-container">
+                    <input type="text" id="masa" name="masa" placeholder="Contoh: 9.00 Pagi">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="acara">Acara</label>
+                <div class="input-container">
+                    <input type="text" id="acara" name="acara" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="oleh">oleh</label>
+                <div class="input-container">
+                    <input type="text" id="oleh" name="oleh" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label>Gambar (Optional)</label>
+                <div class="input-container">
+                    <input type="file" id="gambarInput" name="gambar" accept="image/*" class="hidden-input">
+                    <button type="button" id="uploadBtn" class="upload-btn">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> Muat Naik Gambar
+                    </button>
+                    <span id="fileName" class="file-name">Tiada fail dipilih</span>
+                </div>
+            </div>
+
+            <div class="form-footer">
+                <button type="submit" class="submit-btn">Daftar</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="js/activity_form.js"></script>
+</body>
+
+</html>
