@@ -1,35 +1,21 @@
-# 🕌 Surau Digital Display System
+# 🕌 Surau Digital Display System (Firebase Edition)
 
-A **modern, elegant digital display** for surau & masjid — showing **live prayer times, countdown to next prayer, Islamic dates, and weekly activities** in a beautiful, TV-friendly layout.
+A **modern, elegant, and dynamic digital display** for surau & masjid — featuring **live prayer times, automated countdowns, Islamic dates, and real-time activity management** powered by Firebase.
 
-Designed for **Surau Seri Dahlia, Bandar Seri Putra**, but easily adaptable for any mosque or prayer hall.
+Designed for **Surau Seri Dahlia, Bandar Seri Putra**, with a TV-friendly "glassmorphism" interface.
 
 ---
 
 ## ✨ Features
 
-✅ **Live Digital Clock** (12-hour format with seconds)  
-✅ **Automatic Prayer Times** (Malaysia – JAKIM zone support)  
-✅ **Next Prayer Countdown Timer**  
-✅ **Gregorian & Hijri Dates**  
-✅ **Iqamah Time Display**  
-✅ **Weekly Activities Schedule**  
-✅ **Auto-Rotating Announcements / Ads**  
-✅ **Glassmorphism UI** – perfect for TV & large screens  
-✅ **Offline-friendly once loaded**
-
----
-
-## 🖥️ Preview
-
-> Designed for **Full HD (1920×1080)** displays  
-> Works great on:
-- Smart TV (via browser)
-- Android TV
-- Raspberry Pi
-- Mini PC / NUC
-
-📸 *Add screenshots here once deployed*
+✅ **Live Digital Clock** – Automated 12-hour format with seconds.  
+✅ **Automated Prayer Times** – Real-time sync with JAKIM Malaysia zones via API.  
+✅ **Dynamic Activity Board** – Manage weekly activities via Firebase (Firestore).  
+✅ **Automatic Countdown** – Live timer to the next prayer / Iqamah.  
+✅ **Gregorian & Hijri Calendars** – Automatic daily updates.  
+✅ **Advertisement Carousel** – Rotating community announcements and support messages.  
+✅ **Glassmorphism UI** – Optimized for clear visibility on large TV screens.  
+✅ **Web-Based Admin** – Add activities remotely without touching code.
 
 ---
 
@@ -37,164 +23,91 @@ Designed for **Surau Seri Dahlia, Bandar Seri Putra**, but easily adaptable for 
 
 | Technology | Purpose |
 |----------|--------|
-| **HTML5** | Layout & structure |
-| **CSS3** | Modern UI (glassmorphism, animations) |
-| **JavaScript (Vanilla)** | Clock, countdown, API handling |
-| **Waktu Solat API** | Official Malaysia prayer times |
-| **Google Fonts** | Amiri & Montserrat |
-| **Font Awesome** | Islamic & UI icons |
-
-No frameworks.  
-No build step.  
-Just open & run. ⚡
+| **HTML5 / CSS3** | Structure & Modern UI (Glassmorphism) |
+| **JavaScript (ES6+)** | Frontend logic & dynamic rendering |
+| **Firebase Firestore** | Real-time database for activities |
+| **Firebase Auth** | Secure access for management |
+| **Waktu Solat API** | Official Malaysia prayer times data |
+| **Font Awesome** | Specialized Islamic & UI icons |
 
 ---
 
 ## 📁 Project Structure
 
 ```text
-surau-display-python/
+surau-display-firebase/
 │
-├── index.html          # Main display page
-├── css/
-│   └── style.css       # UI styling & layout
+├── index.html           # Main TV display dashboard
+├── activity_form.html    # Web form to add/update activities
+│
 ├── js/
-│   └── script.js       # Clock, prayer times, countdown
-├── img/
-│   ├── logo.jpg        # Surau logo
-│   ├── mosque_bg.png   # Background image
-│   └── ustaz/          # Speaker images
-└── README.md
-
-
-##⚙️ Configuration
-1️⃣ Set Prayer Zone
-
-Open script.js and edit:
-
-const CONFIG = {
-  zone: 'SGR01', // Example: Hulu Langat
-  location: 'Bandar Seri Putra',
-  country: 'Malaysia'
-};
-
-📌 Common Malaysia Zones:
-
-SGR01 – Hulu Langat
-
-WLY01 – Kuala Lumpur
-
-JHR02 – Johor Bahru
-
-PNG01 – Penang
-
-2️⃣ Update Surau Info
-
-Edit in index.html:
-
-<h1 class="english-name">Surau Seri Dahlia</h1>
-<h2 class="arabic-name">سوراو سري داهليا</h2>
-
-Replace the logo:
-
-img/logo.jpg
-
-3️⃣ Weekly Activities
-
-Modify the Weekly Activities section in index.html to match your surau’s schedule:
-
-Kuliah Subuh
-
-Kelas Al-Quran
-
-Yasin & Tahlil
-
-Children’s classes
-
-Special events
-
-Supports:
-
-Speaker photo
-
-Icons
-
-Multiple sessions per day
-
-
-##📺 Running the Display
-Option A: Simple (Recommended)
-
-Just open index.html in:
-
-Chrome
-
-Edge
-
-Firefox
-
-Then press F11 (Fullscreen).
-
-
-Option B: Raspberry Pi / Kiosk Mode
-
-chromium-browser --kiosk index.html
-
-Perfect for 24/7 TV display.
-
-🧠 Design Philosophy
-
-🧘 Calm & respectful
-
-📖 Easy to read from far
-
-🌙 Islamic aesthetics
-
-🚫 No distractions
-
-🧓 Elder-friendly fonts
-
-
-🔮 Planned Enhancements (Ideas)
-
-🔊 Azan audio playback
-
-🌧️ Weather widget
-
-📢 Emergency announcements
-
-🌐 Multi-language toggle
-
-📱 Remote admin panel
-
-🕰️ Configurable iqamah delays
-
-PRs are welcome 🤝
-
-
-📜 License
-
-MIT License
-
-🕌 Credits
-
-Built with ❤️ for the community
-Inspired by real surau needs in Malaysia
-
-“Sebaik-baik manusia adalah yang paling bermanfaat kepada manusia lain.”
-
-⭐ Support the Project
-
-If this helped your surau:
-
-Give it a ⭐ on GitHub
-
-Share with other masjid committees
-
-Make du‘a for the contributors 🤍
-
+│   ├── firebase.js       # Firebase SDK initialization & config
+│   ├── script.js         # Core display logic & Firestore sync
+│   └── activity_form.js  # Logic for the activity management form
+│
+├── css/
+│   ├── style.css         # Dashboard styling
+│   └── activity_form.css # Form styling
+│
+└── img/
+    ├── logo.jpg          # Surau official logo
+    └── ustaz/            # Image assets for speakers
+```
 
 ---
 
+## 🚀 Getting Started
 
+### 1. Firebase Setup
+To use the dynamic activity feature, you need to connect your Firebase project:
 
+1. Create a project at [Firebase Console](https://console.firebase.google.com/).
+2. Enable **Firestore Database** and **Authentication**.
+3. Create a `.env` or edit `js/firebase.js` with your credentials:
+
+```javascript
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+  projectId: "YOUR_PROJECT_ID",
+  // ... rest of your config
+};
+```
+
+### 2. Configure Prayer Zone
+Open `js/script.js` and set your JAKIM zone:
+```javascript
+const CONFIG = {
+  zone: 'SGR01', // Example: Hulu Langat
+  location: 'Bandar Seri Putra',
+};
+```
+
+---
+
+## 📺 Deployment
+
+### Smart TV / Mini PC
+1. Host the files on **Firebase Hosting** (recommended) or any static web host.
+2. Open the URL in the TV browser.
+3. Press **F11** or enter **Kiosk Mode** for a full-screen experience.
+
+### Remote Updates
+Use `activity_form.html` from any mobile device or PC to update the jadual (schedule). Changes will reflect on the TV display **instantly** via Firestore's real-time listeners.
+
+---
+
+## 🧘 Design Philosophy
+
+Built to be **distraction-free**, **elder-friendly**, and **aesthetically pleasing**. The interface transitions smoothly between day and night, ensuring high legibility from a distance.
+
+---
+
+## 📜 License
+MIT License
+
+## 🕌 Credits
+Built with ❤️ for the community.
+Inspired by the needs of **Surau Seri Dahlia**.
+
+⭐ **Support the Project** – Share it with other masjid committees!
