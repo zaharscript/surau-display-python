@@ -1,88 +1,62 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const tarikhInput = document.getElementById('tarikh');
-    const hariDisp = document.getElementById('hariDisp');
-    const hariInput = document.getElementById('hari');
-    const uploadBtn = document.getElementById('uploadBtn');
-    const gambarInput = document.getElementById('gambarInput');
-    const fileName = document.getElementById('fileName');
-    const activityForm = document.getElementById('activityForm');
+import { db } from "./firebase.js";
+import {
+  collection,
+  addDoc,
+  serverTimestamp,
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-    // Days in Malay
-    const malayDays = [
-        'Ahad',
-        'Isnin',
-        'Selasa',
-        'Rabu',
-        'Khamis',
-        'Jumaat',
-        'Sabtu'
-    ];
+document.addEventListener("DOMContentLoaded", () => {
+  const tarikhInput = document.getElementById("tarikh");
+  const hariDisp = document.getElementById("hariDisp");
+  const hariInput = document.getElementById("hari");
+  const activityForm = document.getElementById("activityForm");
 
-    // Auto-fill Hari based on Tarikh
-    tarikhInput.addEventListener('change', (e) => {
-        const dateVal = e.target.value;
-        if (dateVal) {
-            const date = new Date(dateVal);
-            const dayName = malayDays[date.getDay()];
-            hariDisp.textContent = dayName;
-            hariInput.value = dayName;
-        } else {
-            hariDisp.textContent = '-';
-            hariInput.value = '';
-        }
-    });
+  const malayDays = [
+    "Ahad",
+    "Isnin",
+    "Selasa",
+    "Rabu",
+    "Khamis",
+    "Jumaat",
+    "Sabtu",
+  ];
 
-    // Trigger file upload
-    uploadBtn.addEventListener('click', () => {
-        gambarInput.click();
-    });
+  // Auto fill hari
+  tarikhInput.addEventListener("change", (e) => {
+    const dateVal = e.target.value;
 
-    // Show selected file name
-    gambarInput.addEventListener('change', (e) => {
-        if (e.target.files.length > 0) {
-            fileName.textContent = e.target.files[0].name;
-        } else {
-            fileName.textContent = 'Tiada fail dipilih';
-        }
-    });
+    if (dateVal) {
+      const date = new Date(dateVal);
+      const dayName = malayDays[date.getDay()];
+      hariDisp.textContent = dayName;
+      hariInput.value = dayName;
+    } else {
+      hariDisp.textContent = "-";
+      hariInput.value = "";
+    }
+  });
 
-    // Helper to convert image to Base64
-    const toBase64 = file => new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
-    });
+  // Submit form
+  activityForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-    // Form Submission
-    activityForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
+    try {
+      const formData = new FormData(activityForm);
+      const data = Object.fromEntries(formData.entries());
 
-        const formData = new FormData(activityForm);
-        const data = Object.fromEntries(formData.entries());
+      await addDoc(collection(db, "activities"), {
+        tarikh: data.tarikh,
+        hari: data.hari,
+        tajuk: data.tajuk, // ← FIXED
+        penceramah: data.penceramah,
+        createdAt: serverTimestamp(),
+      });
 
-        // Handle optional image
-        const imageFile = gambarInput.files[0];
-        if (imageFile) {
-            try {
-                data.imageData = await toBase64(imageFile);
-            } catch (err) {
-                console.error("Error converting image:", err);
-            }
-        }
-
-        // Add timestamp for sorting
-        data.id = Date.now();
-        data.timestamp = new Date().toISOString();
-
-        // Save to localStorage
-        const existingActivities = JSON.parse(localStorage.getItem('surau_activities') || '[]');
-        existingActivities.push(data);
-        localStorage.setItem('surau_activities', JSON.stringify(existingActivities));
-
-        alert('Aktiviti berjaya didaftarkan!');
-
-        // Redirect to main page
-        window.location.href = 'index.html';
-    });
+      alert("Aktiviti berjaya didaftarkan!");
+      window.location.href = "index.html";
+    } catch (error) {
+      console.error("Error saving activity:", error);
+      alert("Gagal menyimpan aktiviti. Sila cuba lagi.");
+    }
+  });
 });
