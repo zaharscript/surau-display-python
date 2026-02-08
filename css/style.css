@@ -21,26 +21,43 @@
 body {
     font-family: var(--font-body);
     color: var(--text-light);
-    height: 100vh;
-    overflow: hidden;
-    /* Prevent scrolling for display screens */
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Enable scrolling for mobile */
     background-color: #000;
+}
+
+/* On TV/Large screens, we still want to hide overflow */
+@media (min-width: 1025px) {
+    body {
+        height: 100vh;
+        overflow: hidden;
+    }
 }
 
 /* Background Handling */
 .display-container {
     position: relative;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 5vh 5vw;
-    /* TV Safe Area (increased from 2vh 3vw) */
+    padding: 2rem;
+    /* Default mobile padding */
     background-image: url('../img/mosque_bg.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+@media (min-width: 1025px) {
+    .display-container {
+        height: 100vh;
+        padding: 5vh 5vw;
+        /* TV Safe Area */
+    }
 }
 
 .bg-overlay {
@@ -64,24 +81,48 @@ body {
 /* Header */
 .main-header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    /* Stack on small mobile */
+    gap: 1rem;
     align-items: center;
+    text-align: center;
     border-bottom: 1px solid var(--glass-border);
-    padding-bottom: 1.5vh;
-    margin-bottom: 2vh;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+    .main-header {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
 }
 
 .logo-area {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .logo-area {
+        flex-direction: row;
+        align-items: center;
+    }
 }
 
 .mosque-logo {
-    height: 80px;
+    height: 60px;
     width: auto;
     border-radius: 8px;
-    /* Optional: if the logo needs rounded corners */
+}
+
+@media (min-width: 1025px) {
+    .mosque-logo {
+        height: 80px;
+    }
 }
 
 .mosque-titles {
@@ -90,52 +131,106 @@ body {
 }
 
 .english-name {
-    font-size: 2.8rem;
-    /* Increased from 2.2rem */
+    font-size: 1.8rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    line-height: 1;
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+
+@media (min-width: 1025px) {
+    .english-name {
+        font-size: 2.8rem;
+        letter-spacing: 2px;
+        line-height: 1;
+    }
 }
 
 .arabic-name {
     font-family: var(--font-heading);
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     color: var(--primary-gold);
 }
 
+@media (min-width: 1025px) {
+    .arabic-name {
+        font-size: 2.5rem;
+    }
+}
+
 .date-time-weather {
-    text-align: right;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .date-time-weather {
+        text-align: right;
+    }
 }
 
 .gregorian-date {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     font-weight: 500;
+}
+
+@media (min-width: 1025px) {
+    .gregorian-date {
+        font-size: 1.5rem;
+    }
 }
 
 .hijri-date {
     font-family: var(--font-heading);
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     color: var(--primary-gold);
+}
+
+@media (min-width: 1025px) {
+    .hijri-date {
+        font-size: 1.4rem;
+    }
 }
 
 /* Main Content Layout */
 .main-content {
     display: flex;
-    flex: 1;
-    gap: 3vw;
-    height: 100%;
-    overflow: hidden;
+    flex-direction: column;
+    /* Stack vertically on mobile */
+    gap: 2rem;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 1025px) {
+    .main-content {
+        flex-direction: row;
+        flex: 1;
+        gap: 3vw;
+        height: 0;
+        /* Allow flex children to scroll independently if needed */
+        overflow: hidden;
+        margin-bottom: 0;
+    }
 }
 
 /* Left Section: Clock & Countdown */
 .clock-section {
-    flex: 1;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 4vh;
+    gap: 2rem;
+}
+
+@media (min-width: 1025px) {
+    .clock-section {
+        flex: 1;
+        gap: 4vh;
+        max-width: none;
+    }
 }
 
 .live-clock-container {
@@ -145,51 +240,77 @@ body {
 }
 
 .digital-clock {
-    font-size: 10rem;
-    /* Increased from 8rem */
+    font-size: 5rem;
+    /* Default mobile size */
     font-weight: 700;
     line-height: 1;
     text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
+@media (min-width: 1025px) {
+    .digital-clock {
+        font-size: 10rem;
+    }
+}
+
 .period {
-    font-size: 3rem;
+    font-size: 1.5rem;
     font-weight: 300;
     color: var(--primary-gold);
+}
+
+@media (min-width: 1025px) {
+    .period {
+        font-size: 3rem;
+    }
 }
 
 .next-prayer-card {
     background: var(--glass-bg);
     border: 1px solid var(--primary-gold);
-    padding: 2rem 3rem;
+    padding: 1.5rem;
     border-radius: 20px;
     text-align: center;
     backdrop-filter: blur(10px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    min-width: 400px;
+    width: 100%;
+    min-width: 0;
+}
+
+@media (min-width: 1025px) {
+    .next-prayer-card {
+        padding: 2rem 3rem;
+        min-width: 400px;
+    }
 }
 
 .next-prayer-card h3 {
     text-transform: uppercase;
     letter-spacing: 2px;
     color: var(--text-dim);
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-bottom: 0.5rem;
 }
 
 .next-name {
-    font-size: 4rem;
-    /* Increased from 3rem */
+    font-size: 2.5rem;
     font-weight: 700;
     color: var(--primary-gold);
     margin-bottom: 0.5rem;
 }
 
+@media (min-width: 1025px) {
+    .next-name {
+        font-size: 4rem;
+    }
+}
+
 .advertisement {
     width: 100%;
-    max-width: 420px;
-    height: 220px;
-    /* IMPORTANT */
+    max-width: 600px;
+    margin: 0 auto;
+    height: auto;
+    min-height: 200px;
     background: var(--glass-bg);
     border: 1px solid var(--primary-gold);
     border-radius: 20px;
@@ -198,6 +319,14 @@ body {
     overflow: hidden;
     backdrop-filter: blur(10px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 1025px) {
+    .advertisement {
+        max-width: 420px;
+        height: 220px;
+        margin: 0;
+    }
 }
 
 .advertisement h3 {
@@ -211,22 +340,37 @@ body {
 
 .countdown-timer {
     font-family: monospace;
-    font-size: 4rem;
+    font-size: 2.5rem;
     font-weight: 700;
+}
+
+@media (min-width: 1025px) {
+    .countdown-timer {
+        font-size: 4rem;
+    }
 }
 
 /* Center Section: Weekly Activities */
 .activities-section {
-    flex: 1.5;
-    /* Give it more space */
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     border-radius: 20px;
-    padding: 1.5rem;
+    padding: 1.2rem;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
     backdrop-filter: blur(10px);
+}
+
+@media (min-width: 1025px) {
+    .activities-section {
+        flex: 1.5;
+        padding: 1.5rem;
+        max-width: none;
+        overflow: hidden;
+    }
 }
 
 .activities-header {
@@ -533,6 +677,32 @@ body {
 .contact-info i {
     color: var(--primary-gold);
     margin-right: 0.5rem;
+}
+
+/* Right: Prayer Times List */
+.prayer-times-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.8rem;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+@media (max-width: 480px) {
+    .prayer-times-section {
+        grid-template-columns: 1fr 1fr;
+        /* Two columns on very small screens */
+    }
+}
+
+@media (min-width: 1025px) {
+    .prayer-times-section {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 0;
+        gap: 1.5vh;
+    }
 }
 
 /* Animations */

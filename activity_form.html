@@ -33,82 +33,67 @@
                         <i class="fas fa-circle"></i> Menyambung...
                     </div>
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <h2 class="sub-title">Maklumat Aktiviti</h2>
-                    <a href="index.html" class="back-link"
-                        style="color: var(--btn-dark-blue); text-decoration: none; font-weight: 600; font-size: 0.9rem;">
-                        <i class="fas fa-home"></i> Utama
-                    </a>
+                <header class="form-header">
+                    <img src="img/mosque_logo.png" alt="Mosque Logo" class="form-logo">
+                    <div class="header-text">
+                        <h1 class="main-title">Pendaftaran Aktiviti</h1>
+                        <p class="sub-title">Masjid Al-Ikhlas</p>
+                        <div id="syncBadge" class="sync-badge" title="Status sambungan">
+                            <i class="fas fa-check-circle"></i> Tersambung
+                        </div>
+                    </div>
+                </header>
+
+                <form id="activityForm" class="activity-form">
+                    <input type="hidden" id="editId">
+
+                    <div class="form-group row">
+                        <label for="tarikh">Tarikh Aktiviti</label>
+                        <div class="input-container">
+                            <input type="date" id="tarikh" name="tarikh" required>
+                            <div id="hariDisp" class="hari-display">-</div>
+                            <input type="hidden" id="hari" name="hari">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="masa">Masa Aktiviti</label>
+                        <div class="input-container">
+                            <input type="text" id="masa" name="masa" placeholder="Cth: 7:30 PM / Selepas Maghrib">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="tajuk">Tajuk Aktiviti</label>
+                        <div class="input-container">
+                            <input type="text" id="tajuk" name="tajuk" placeholder="Masukkan tajuk program" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="penceramah">Penceramah</label>
+                        <div class="input-container">
+                            <input type="text" id="penceramah" name="penceramah" placeholder="Nama Ustaz / Penceramah"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="form-footer">
+                        <button type="submit" id="submitBtn" class="submit-btn">Daftar Aktiviti</button>
+                        <button type="button" id="cancelEdit" class="cancel-btn" style="display: none;">Batal
+                            Kemaskini</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Activity List Section -->
+            <div class="list-wrapper">
+                <h2 class="list-title"><i class="fas fa-list"></i> Senarai Aktiviti Terkini</h2>
+                <div id="activityList" class="activity-list">
+                    <!-- Activities will be loaded here -->
+                    <p style="text-align: center; color: #888; padding: 2rem;">Memuatkan aktiviti...</p>
                 </div>
             </div>
-        </header>
-
-        <form id="activityForm" class="activity-form">
-            <input type="hidden" id="editId" name="editId">
-
-            <!-- TARIKH -->
-            <div class="form-group row">
-                <label for="tarikh">Tarikh</label>
-                <div class="input-container">
-                    <input type="date" id="tarikh" name="tarikh" required>
-                </div>
-            </div>
-
-            <!-- HARI AUTO -->
-            <div class="form-group row">
-                <label>Hari</label>
-                <div class="input-container">
-                    <span id="hariDisp" class="hari-display">-</span>
-                    <input type="hidden" id="hari" name="hari">
-                </div>
-            </div>
-
-            <!-- MASA -->
-            <div class="form-group row">
-                <label for="masa">Masa (Optional)</label>
-                <div class="input-container">
-                    <input type="text" id="masa" name="masa" placeholder="Contoh: 9.00 Pagi">
-                </div>
-            </div>
-
-            <!-- TAJUK AKTIVITI -->
-            <div class="form-group row">
-                <label for="tajuk">Tajuk Aktiviti</label>
-                <div class="input-container">
-                    <input type="text" id="tajuk" name="tajuk" required>
-                </div>
-            </div>
-
-            <!-- PENCERAMAH -->
-            <div class="form-group row">
-                <label for="penceramah">Penceramah</label>
-                <div class="input-container">
-                    <input type="text" id="penceramah" name="penceramah" required>
-                </div>
-            </div>
-
-            <!-- SUBMIT -->
-            <div class="form-footer">
-                <button type="submit" id="submitBtn" class="submit-btn" style="background-color: #1A5319;">
-                    Daftar Aktiviti
-                </button>
-                <button type="button" id="cancelEdit" class="submit-btn"
-                    style="background-color: #666; display: none; margin-left: 10px;">
-                    Batal
-                </button>
-            </div>
-
-        </form>
-
-        <hr style="margin: 2.5rem 0; border: 0; border-top: 2px solid #eee;">
-
-        <div class="activity-list-section">
-            <h3 style="margin-bottom: 1.5rem; color: var(--primary-green);">Senarai Aktiviti Semasa</h3>
-            <div id="activityList" class="activity-list">
-                <!-- Activities will be loaded here -->
-                <p style="text-align: center; color: #888;">Memuatkan senarai aktiviti...</p>
-            </div>
-        </div>
     </div>
 
     <!-- Firebase Scripts -->

@@ -122,8 +122,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // UI Updates
     submitBtn.textContent = "Simpan Kemaskini";
     submitBtn.style.backgroundColor = "#f1c40f";
-    submitBtn.style.color = "#333";
-    cancelEditBtn.style.display = "inline-block";
+    submitBtn.style.color = "#1a202c";
+    cancelEditBtn.style.display = "block";
 
     // Scroll to form
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -152,8 +152,8 @@ document.addEventListener("DOMContentLoaded", () => {
     editIdInput.value = "";
     hariDisp.textContent = "-";
     submitBtn.textContent = "Daftar Aktiviti";
-    submitBtn.style.backgroundColor = "#1A5319";
-    submitBtn.style.color = "white";
+    submitBtn.style.backgroundColor = ""; // Reset to CSS default
+    submitBtn.style.color = "";
     cancelEditBtn.style.display = "none";
   }
 
@@ -204,6 +204,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // Reset button state
       submitBtn.disabled = false;
       submitBtn.textContent = id ? "Simpan Kemaskini" : "Daftar Aktiviti";
+      submitBtn.style.backgroundColor = id ? "#f1c40f" : "";
+      submitBtn.style.color = id ? "#1a202c" : "";
     }
   });
 });
