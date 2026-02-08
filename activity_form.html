@@ -28,11 +28,18 @@
             </div>
             <div class="header-text">
                 <h1 class="main-title">Surau Seri Dahlia</h1>
-                <h2 class="sub-title">Maklumat Aktiviti Mingguan</h2>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h2 class="sub-title">Maklumat Aktiviti Mingguan</h2>
+                    <a href="index.html" class="back-link"
+                        style="color: var(--btn-dark-blue); text-decoration: none; font-weight: 600; font-size: 0.9rem;">
+                        <i class="fas fa-arrow-left"></i> Kembali ke Laman Utama
+                    </a>
+                </div>
             </div>
         </header>
 
         <form id="activityForm" class="activity-form">
+            <input type="hidden" id="editId" name="editId">
 
             <!-- TARIKH -->
             <div class="form-group row">
@@ -77,12 +84,26 @@
 
             <!-- SUBMIT -->
             <div class="form-footer">
-                <button type="submit" class="submit-btn">
+                <button type="submit" id="submitBtn" class="submit-btn" style="background-color: #1A5319;">
                     Daftar Aktiviti
+                </button>
+                <button type="button" id="cancelEdit" class="submit-btn"
+                    style="background-color: #666; display: none; margin-left: 10px;">
+                    Batal
                 </button>
             </div>
 
         </form>
+
+        <hr style="margin: 2.5rem 0; border: 0; border-top: 2px solid #eee;">
+
+        <div class="activity-list-section">
+            <h3 style="margin-bottom: 1.5rem; color: var(--primary-green);">Senarai Aktiviti Semasa</h3>
+            <div id="activityList" class="activity-list">
+                <!-- Activities will be loaded here -->
+                <p style="text-align: center; color: #888;">Memuatkan senarai aktiviti...</p>
+            </div>
+        </div>
     </div>
 
     <!-- Firebase Scripts -->
