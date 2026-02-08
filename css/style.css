@@ -9,6 +9,7 @@
     --card-active: rgba(212, 175, 55, 0.2);
     --font-heading: 'Amiri', serif;
     --font-body: 'Montserrat', sans-serif;
+    --pulse-color: rgba(16, 185, 129, 0.4);
 }
 
 * {
@@ -34,7 +35,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 2vh 3vw;
+    padding: 5vh 5vw;
+    /* TV Safe Area (increased from 2vh 3vw) */
     background-image: url('../img/mosque_bg.png');
     background-size: cover;
     background-position: center;
@@ -88,7 +90,8 @@ body {
 }
 
 .english-name {
-    font-size: 2.2rem;
+    font-size: 2.8rem;
+    /* Increased from 2.2rem */
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -142,7 +145,8 @@ body {
 }
 
 .digital-clock {
-    font-size: 8rem;
+    font-size: 10rem;
+    /* Increased from 8rem */
     font-weight: 700;
     line-height: 1;
     text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
@@ -174,7 +178,8 @@ body {
 }
 
 .next-name {
-    font-size: 3rem;
+    font-size: 4rem;
+    /* Increased from 3rem */
     font-weight: 700;
     color: var(--primary-gold);
     margin-bottom: 0.5rem;
@@ -686,4 +691,64 @@ body {
     color: #B91C1C;
     margin-top: 0.3rem;
     font-size: 1.1rem;
+}
+
+/* Update Pulse Animation */
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 0 0 var(--pulse-color);
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow: 0 0 20px 10px var(--pulse-color);
+        transform: scale(1.02);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 var(--pulse-color);
+        transform: scale(1);
+    }
+}
+
+.update-pulse {
+    animation: pulse-glow 2s ease-out;
+}
+
+/* QR Code Pairing Overlay */
+.qr-container {
+    position: absolute;
+    bottom: 2vh;
+    left: 2vw;
+    background: white;
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.3s ease;
+}
+
+.qr-container:hover {
+    transform: scale(1.1);
+}
+
+.qr-label {
+    color: #333;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.qr-placeholder {
+    width: 80px;
+    height: 80px;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
 }

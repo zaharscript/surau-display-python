@@ -20,6 +20,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const editIdInput = document.getElementById("editId");
   const submitBtn = document.getElementById("submitBtn");
   const cancelEditBtn = document.getElementById("cancelEdit");
+  const syncStatus = document.getElementById("syncStatus");
+
+  // Sync Status Logic
+  function updateSyncStatus(isSynced, isError = false) {
+    if (isError) {
+      syncStatus.innerHTML = '<i class="fas fa-exclamation-circle"></i> Ralat';
+      syncStatus.className = "sync-badge error";
+    } else if (isSynced) {
+      syncStatus.innerHTML = '<i class="fas fa-check-circle"></i> Bersama';
+      syncStatus.className = "sync-badge synced";
+    } else {
+      syncStatus.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Menyinkron...';
+      syncStatus.className = "sync-badge";
+    }
+  }
+
+  // Initial status
+  updateSyncStatus(navigator.onLine);
+  window.addEventListener("online", () => updateSyncStatus(true));
+  window.addEventListener("offline", () => updateSyncStatus(false));
 
   const malayDays = [
     "Ahad",
@@ -142,6 +162,11 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     const id = editIdInput.value;
 
+    // Optimistic UI state
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Menyimpan...';
+    updateSyncStatus(false);
+
     try {
       const formData = new FormData(activityForm);
       const data = Object.fromEntries(formData.entries());
@@ -158,18 +183,27 @@ document.addEventListener("DOMContentLoaded", () => {
       if (id) {
         // Update
         await updateDoc(doc(db, "activities", id), activityData);
+        // Success feedback
+        updateSyncStatus(true);
         alert("Aktiviti berjaya dikemaskini!");
         resetForm();
       } else {
         // Add
         activityData.createdAt = serverTimestamp();
         await addDoc(collection(db, "activities"), activityData);
+        // Success feedback
+        updateSyncStatus(true);
         alert("Aktiviti berjaya didaftarkan!");
         window.location.href = "index.html"; // Redirect to main display
       }
     } catch (error) {
       console.error("Error saving activity:", error);
+      updateSyncStatus(false, true);
       alert("Gagal menyimpan aktiviti. Sila cuba lagi.");
+
+      // Reset button state
+      submitBtn.disabled = false;
+      submitBtn.textContent = id ? "Simpan Kemaskini" : "Daftar Aktiviti";
     }
   });
 });

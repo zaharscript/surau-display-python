@@ -163,6 +163,34 @@ input[type="date"]:focus {
     transform: scale(0.98);
 }
 
+/* Sync Badge */
+.sync-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: #f0f0f0;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s ease;
+}
+
+.sync-badge.synced {
+    background: rgba(26, 83, 25, 0.1);
+    color: #1A5319;
+}
+
+.sync-badge.synced i {
+    color: #27ae60;
+}
+
+.sync-badge.error {
+    background: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+}
+
 /* Activity List Styling */
 .activity-list {
     display: flex;

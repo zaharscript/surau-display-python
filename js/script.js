@@ -232,9 +232,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const tickerTime = formatTime12h(nextPrayer.time);
       const prayerLabel =
         nextPrayer.name === "Syuruq" ? "Syuruq" : nextPrayer.name;
-      nextPrayerTickerEl.textContent = `${prayerLabel} starts at ${tickerTime}${
-        nextPrayer.isTomorrow ? " tomorrow" : ""
-      }.`;
+      nextPrayerTickerEl.textContent = `${prayerLabel} starts at ${tickerTime}${nextPrayer.isTomorrow ? " tomorrow" : ""
+        }.`;
     }
   }
 
@@ -319,6 +318,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     onSnapshot(q, (snapshot) => {
       activitiesContainer.innerHTML = "";
+
+      // Add visual feedback for update
+      activitiesContainer.classList.remove("update-pulse");
+      void activitiesContainer.offsetWidth; // Trigger reflow
+      activitiesContainer.classList.add("update-pulse");
 
       snapshot.forEach((doc) => {
         const data = doc.data();
@@ -409,9 +413,8 @@ document.addEventListener("DOMContentLoaded", () => {
           itemDiv.innerHTML = `
                         <div class="act-icon"><i class="fa-solid ${icon}"></i></div>
                         <div class="act-details">
-                            <div class="act-title">${act.acara} ${
-            act.masa ? `(${act.masa})` : ""
-          }</div>
+                            <div class="act-title">${act.acara} ${act.masa ? `(${act.masa})` : ""
+            }</div>
                             <div class="act-lead">${act.oleh}</div>
                         </div>
                     `;
