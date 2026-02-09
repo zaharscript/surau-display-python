@@ -24,6 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Sync Status Logic
   function updateSyncStatus(isSynced, isError = false) {
+    if (!syncStatus) return; // Be defensive
+
     if (isError) {
       syncStatus.innerHTML = '<i class="fas fa-exclamation-circle"></i> Ralat';
       syncStatus.className = "sync-badge error";

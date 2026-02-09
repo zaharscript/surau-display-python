@@ -28,12 +28,14 @@ body {
 .form-wrapper {
     background: var(--bg-light);
     width: 100%;
-    max-width: 700px;
+    max-width: 900px;
+    /* Increased from 700px */
     padding: 1.5rem;
-    /* Reduced padding for mobile by default */
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     border: 1px solid #e0e0e0;
+    margin: 2rem auto;
+    /* Ensure it's centered and has vertical margin */
 }
 
 @media (min-width: 768px) {
@@ -81,6 +83,35 @@ body {
     font-size: 1.8rem;
     color: var(--primary-green);
     font-weight: 700;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.2rem;
+}
+
+.back-link {
+    text-decoration: none;
+    color: var(--primary-green);
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--primary-green);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.back-link:hover {
+    background-color: var(--primary-green);
+    color: white;
 }
 
 @media (min-width: 768px) {
@@ -226,7 +257,21 @@ select:focus {
     color: #e74c3c;
 }
 
-/* Activity List Styling */
+.list-wrapper {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid #edf2f7;
+}
+
+.list-title {
+    margin-bottom: 1.5rem;
+    color: var(--primary-green);
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
 .activity-list {
     display: flex;
     flex-direction: column;
