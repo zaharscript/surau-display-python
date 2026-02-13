@@ -33,7 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
       syncStatus.innerHTML = '<i class="fas fa-check-circle"></i> Bersama';
       syncStatus.className = "sync-badge synced";
     } else {
-      syncStatus.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Menyinkron...';
+      syncStatus.innerHTML =
+        '<i class="fas fa-circle-notch fa-spin"></i> Menyinkron...';
       syncStatus.className = "sync-badge";
     }
   }
@@ -75,7 +76,8 @@ document.addEventListener("DOMContentLoaded", () => {
   onSnapshot(q, (snapshot) => {
     activityList.innerHTML = "";
     if (snapshot.empty) {
-      activityList.innerHTML = '<p style="text-align: center; color: #888;">Tiada aktiviti dijumpai.</p>';
+      activityList.innerHTML =
+        '<p style="text-align: center; color: #888;">Tiada aktiviti dijumpai.</p>';
       return;
     }
 
@@ -91,6 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <p><strong>Tarikh:</strong> ${data.tarikh} (${data.hari})</p>
           <p><strong>Masa:</strong> ${data.masa || "-"}</p>
           <p><strong>Penceramah:</strong> ${data.penceramah}</p>
+          ${data.nota ? `<p><strong>Nota:</strong> ${data.nota}</p>` : ""}
         </div>
         <div class="activity-actions">
           <button class="edit-btn" data-id="${id}">Edit Aktiviti</button>
@@ -101,25 +104,40 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Add event listeners to buttons
-    document.querySelectorAll(".edit-btn").forEach(btn => {
+    document.querySelectorAll(".edit-btn").forEach((btn) => {
       btn.addEventListener("click", () => handleEdit(btn.dataset.id, snapshot));
     });
-    document.querySelectorAll(".delete-btn").forEach(btn => {
+    document.querySelectorAll(".delete-btn").forEach((btn) => {
       btn.addEventListener("click", () => handleDelete(btn.dataset.id));
     });
   });
 
   // Handle Edit click
   function handleEdit(id, snapshot) {
-    const docData = snapshot.docs.find(d => d.id === id).data();
+    const docData = snapshot.docs.find((d) => d.id === id).data();
 
     // Fill form
     editIdInput.value = id;
     tarikhInput.value = docData.tarikh;
     updateDayDisplay(docData.tarikh);
-    document.getElementById("masa").value = docData.masa || "";
+
+    // Handle Masa Radio Selection
+    const masaValue = docData.masa_option || docData.masa || "";
+    const options = ["maghrib", "isyak", "subuh"];
+
+    if (options.includes(masaValue)) {
+      document.querySelector(`input[name="masaOption"][value="${masaValue}"]`).checked = true;
+      document.getElementById("masaLain").style.display = "none";
+    } else {
+      document.querySelector('input[name="masaOption"][value="lain"]').checked = true;
+      const lainBox = document.getElementById("masaLain");
+      lainBox.style.display = "block";
+      lainBox.value = docData.masa || "";
+    }
+
     document.getElementById("tajuk").value = docData.tajuk;
     document.getElementById("penceramah").value = docData.penceramah;
+    document.getElementById("nota").value = docData.nota || "";
 
     // UI Updates
     submitBtn.textContent = "Simpan Kemaskini";
@@ -128,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
     cancelEditBtn.style.display = "block";
 
     // Scroll to form
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   // Handle Delete click
@@ -173,12 +191,21 @@ document.addEventListener("DOMContentLoaded", () => {
       const formData = new FormData(activityForm);
       const data = Object.fromEntries(formData.entries());
 
+      let finalMasa = "";
+      if (data.masaOption === "lain") {
+        finalMasa = document.getElementById("masaLain").value;
+      } else {
+        finalMasa = data.masaOption;
+      }
+
       const activityData = {
         tarikh: data.tarikh,
         hari: data.hari,
-        masa: data.masa || "",
+        masa: finalMasa,
+        masa_option: data.masaOption,
         tajuk: data.tajuk,
         penceramah: data.penceramah,
+        nota: data.nota || "",
         updatedAt: serverTimestamp(),
       };
 
@@ -208,6 +235,21 @@ document.addEventListener("DOMContentLoaded", () => {
       submitBtn.textContent = id ? "Simpan Kemaskini" : "Daftar Aktiviti";
       submitBtn.style.backgroundColor = id ? "#f1c40f" : "";
       submitBtn.style.color = id ? "#1a202c" : "";
+    }
+  });
+});
+
+// Toggle textbox bila pilih lain-lain
+document.querySelectorAll('input[name="masaOption"]').forEach((radio) => {
+  radio.addEventListener("change", () => {
+    const lainBox = document.getElementById("masaLain");
+    if (radio.value === "lain" && radio.checked) {
+      lainBox.style.display = "block";
+      lainBox.required = true;
+    } else {
+      lainBox.style.display = "none";
+      lainBox.required = false;
+      lainBox.value = "";
     }
   });
 });

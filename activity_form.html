@@ -52,11 +52,31 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="masa">Masa Aktiviti</label>
+                    <label>Masa Aktiviti</label>
                     <div class="input-container">
-                        <input type="text" id="masa" name="masa" placeholder="Cth: 7:30 PM / Selepas Maghrib">
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="masaOption" value="maghrib" required>
+                                <span>Maghrib</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="masaOption" value="isyak">
+                                <span>Selepas Isyak</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="masaOption" value="subuh">
+                                <span>Subuh</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="masaOption" value="lain">
+                                <span>Lain-lain (Nyatakan Masa)</span>
+                            </label>
+                        </div>
+                        <input type="text" id="masaLain" placeholder="Cth: 8:00 PM / Sepanjang Hari"
+                            style="display:none;margin-top:10px;" class="dynamic-input">
                     </div>
                 </div>
+
 
                 <div class="form-group row">
                     <label for="tajuk">Tajuk Aktiviti</label>
@@ -66,10 +86,18 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="penceramah">Penceramah</label>
+                    <label for="penceramah">Penceramah/ Peserta</label>
                     <div class="input-container">
-                        <input type="text" id="penceramah" name="penceramah" placeholder="Nama Ustaz / Penceramah"
-                            required>
+                        <input type="text" id="penceramah" name="penceramah"
+                            placeholder="Nama Ustaz / Penceramah / Peserta" required>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="nota">Nota (Pilihan)</label>
+                    <div class="input-container">
+                        <input type="text" id="nota" name="nota"
+                            placeholder="Cth: Sila bawa sejadah / Jamuan disediakan">
                     </div>
                 </div>
 

@@ -327,6 +327,18 @@ document.addEventListener("DOMContentLoaded", () => {
       snapshot.forEach((doc) => {
         const data = doc.data();
 
+        // Format Masa Display
+        let masaDisplay = data.masa || "";
+        if (data.masa_option === "maghrib") {
+          masaDisplay = "Selepas solat Maghrib";
+        } else if (data.masa_option === "isyak") {
+          masaDisplay = "Selepas isyak";
+        } else if (data.masa_option === "subuh") {
+          masaDisplay = "Selepas solat subuh";
+        } else if (data.masa_option === "lain" && data.masa) {
+          masaDisplay = data.masa;
+        }
+
         const activityHTML = `
           <div class="activity-group">
             <div class="activity-date">
@@ -336,8 +348,9 @@ document.addEventListener("DOMContentLoaded", () => {
   
             <div class="activity-item">
               <div class="act-details">
-                <div class="act-title">${data.tajuk}</div>
+                <div class="act-title">${data.tajuk} ${masaDisplay ? `(${masaDisplay})` : ""}</div>
                 <div class="act-lead">${data.penceramah}</div>
+                ${data.nota ? `<div class="act-note" style="font-size: 0.9rem; color: #666; font-style: italic; margin-top: 4px;">${data.nota}</div>` : ""}
               </div>
             </div>
           </div>
