@@ -340,7 +340,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const activityHTML = `
-          <div class="activity-group">
+          <div class="activity-group ${data.is_batal ? 'cancelled' : ''}">
             <div class="activity-date">
               <span class="day-badge">${data.hari}</span>
               <span class="date-text">${data.tarikh}</span>
@@ -352,6 +352,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="act-lead">${data.penceramah}</div>
                 ${data.nota ? `<div class="act-note" style="font-size: 0.9rem; color: #666; font-style: italic; margin-top: 4px;">${data.nota}</div>` : ""}
               </div>
+              ${data.is_batal ? `<div class="batal-overlay"><img src="img/Batal.png" alt="BATAL"></div>` : ""}
             </div>
           </div>
         `;

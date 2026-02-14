@@ -775,12 +775,9 @@ body {
         left: 200%;
     }
 
-    /* Sweep across quickly */
     100% {
         left: 200%;
     }
-
-    /* Wait */
 }
 
 .ad-slide {
@@ -798,10 +795,8 @@ body {
     text-align: center;
     opacity: 0;
     transform: translateY(100%);
-    /* Start from bottom */
     transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     background: transparent;
-    /* Use container background */
     z-index: 1;
 }
 
@@ -813,11 +808,8 @@ body {
 .ad-slide.exit {
     opacity: 0;
     transform: translateY(-100%);
-    /* Exit to top */
 }
 
-/* Different gradients for variety if needed, currently using container bg */
-/* You can override .ad-slide background if you want unique bg per ad */
 .ad-slide.ad2 {
     background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
 }
@@ -833,7 +825,6 @@ body {
 .ad-slide h3 {
     font-family: var(--font-heading);
     color: #8B0000;
-    /* Dark Red */
     font-size: 1.3rem;
     margin-bottom: 0.5rem;
     text-transform: uppercase;
@@ -853,7 +844,6 @@ body {
     font-weight: 800;
     color: var(--primary-blue);
     margin-bottom: 0.3rem;
-    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
 }
 
 .ad-contact {
@@ -921,4 +911,52 @@ body {
     justify-content: center;
     align-items: center;
     border-radius: 4px;
+}
+
+/* Batal/Cancelled Activity Styles */
+.activity-item {
+    position: relative;
+    overflow: visible;
+}
+
+.batal-overlay {
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%, -50%) rotate(-25deg);
+    width: 250px;
+    height: auto;
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0.9;
+    animation: stamp-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.batal-overlay img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+.activity-group.cancelled {
+    border-left-color: #94a3b8;
+}
+
+.activity-group.cancelled .act-title,
+.activity-group.cancelled .act-lead,
+.activity-group.cancelled .act-note {
+    opacity: 0.7;
+    text-decoration: none;
+}
+
+@keyframes stamp-in {
+    0% {
+        transform: translate(-50%, -50%) rotate(-25deg) scale(3);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(-25deg) scale(1);
+        opacity: 0.9;
+    }
 }

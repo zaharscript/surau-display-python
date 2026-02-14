@@ -97,6 +97,9 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
         <div class="activity-actions">
           <button class="edit-btn" data-id="${id}">Edit Aktiviti</button>
+          <button class="batal-btn ${data.is_batal ? 'active' : ''}" data-id="${id}" data-status="${data.is_batal || false}">
+            ${data.is_batal ? 'Aktifkan Semula' : 'Batal Aktiviti'}
+          </button>
           <button class="delete-btn" data-id="${id}">Padam Aktiviti</button>
         </div>
       `;
@@ -110,7 +113,32 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".delete-btn").forEach((btn) => {
       btn.addEventListener("click", () => handleDelete(btn.dataset.id));
     });
+    document.querySelectorAll(".batal-btn").forEach((btn) => {
+      btn.addEventListener("click", () => handleToggleBatal(btn.dataset.id, btn.dataset.status === 'true'));
+    });
   });
+
+  // Handle Toggle Batal click
+  async function handleToggleBatal(id, currentStatus) {
+    const newStatus = !currentStatus;
+    const actionText = newStatus ? "membatalkan" : "mengaktifkan semula";
+
+    if (confirm(`Adakah anda pasti mahu ${actionText} aktiviti ini?`)) {
+      try {
+        updateSyncStatus(false);
+        await updateDoc(doc(db, "activities", id), {
+          is_batal: newStatus,
+          updatedAt: serverTimestamp()
+        });
+        updateSyncStatus(true);
+        window.location.href = "index.html"; // Redirect to main display
+      } catch (error) {
+        console.error("Error toggling batal status:", error);
+        updateSyncStatus(false, true);
+        alert("Gagal mengemaskini status aktiviti.");
+      }
+    }
+  }
 
   // Handle Edit click
   function handleEdit(id, snapshot) {

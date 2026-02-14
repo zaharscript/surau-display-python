@@ -330,20 +330,23 @@ select:focus {
 }
 
 .edit-btn,
-.delete-btn {
+.delete-btn,
+.batal-btn {
     flex: 1;
     /* Equal width on mobile */
     height: 40px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 700;
     color: white;
     transition: all 0.2s;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    padding: 0 5px;
 }
 
 .edit-btn {
@@ -355,7 +358,16 @@ select:focus {
     background-color: #ef4444;
 }
 
+.batal-btn {
+    background-color: #64748b;
+}
+
+.batal-btn.active {
+    background-color: #10b981;
+}
+
 .edit-btn:active,
-.delete-btn:active {
+.delete-btn:active,
+.batal-btn:active {
     scale: 0.95;
 }
