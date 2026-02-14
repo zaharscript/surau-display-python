@@ -451,7 +451,9 @@ document.addEventListener("DOMContentLoaded", () => {
           "abu zaki": "img/ustaz/dr-abu-zaki.jpg",
           "khairatul": "img/ustaz/dr_khairatul.png",
           "ramli": "img/ustaz/Hj_ramli.png",
-          "nik": "img/ustaz/ustaz_nik.png"
+          "nik": "img/ustaz/ustaz_nik.png",
+          "rozie": "img/ustaz/ustaz_rozie.png",
+          "kosi": "img/ustaz/ustaz_kosi.png"
         };
 
         if (data.penceramah) {
