@@ -382,7 +382,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function startRotator() {
       if (rotatorInterval) clearInterval(rotatorInterval);
       currentSlide = 0;
-      const slideInterval = 5000; // 5 seconds
+      const slideInterval = 8000; // 8 seconds
 
       rotatorInterval = setInterval(() => {
         if (slides.length <= 1) return;
