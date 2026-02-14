@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
       month: "long",
       day: "numeric",
     };
-    gregDateEl.textContent = now.toLocaleDateString("en-MY", options);
+    gregDateEl.textContent = now.toLocaleDateString("ms-MY", options);
 
     // Update Prayer Status if we have data
     if (prayerTimes) {
