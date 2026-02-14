@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="activity-actions">
           <button class="edit-btn" data-id="${id}">Edit Aktiviti</button>
           <button class="batal-btn ${data.is_batal ? 'active' : ''}" data-id="${id}" data-status="${data.is_batal || false}">
-            ${data.is_batal ? 'Aktifkan Semula' : 'Batal Aktiviti'}
+            ${data.is_batal ? 'Aktifkan Semula' : 'Tangguh Aktiviti'}
           </button>
           <button class="delete-btn" data-id="${id}">Padam Aktiviti</button>
         </div>
