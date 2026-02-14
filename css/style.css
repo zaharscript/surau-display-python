@@ -533,15 +533,26 @@ body {
     gap: 1.2rem;
 }
 
+.lecturer-photo-brush {
+    display: block;
+    width: 90px;
+    height: 90px;
+    margin-right: 15px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 3px solid var(--primary-gold);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
 .activity-group {
     background: rgba(255, 255, 255, 0.03);
     border-radius: 12px;
     padding: 0.8rem;
     border-left: 3px solid var(--accent-emerald);
     position: relative;
-    /* Ensure absolute positioning works for child img */
-    padding-right: 100px;
-    /* Make space for the image */
+    /* Reduced padding as photo is now inline */
+    padding-right: 1rem;
 }
 
 .group-ustaz-img {

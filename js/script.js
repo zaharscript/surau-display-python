@@ -435,6 +435,35 @@ document.addEventListener("DOMContentLoaded", () => {
           masaDisplay = data.masa;
         }
 
+        // ustaz photo logic
+        let ustazPhotoHTML = "";
+        const SPEAKER_PHOTOS = {
+          "fahmi": "img/ustaz/ustaz_fahmi.png",
+          "saifullah": "img/ustaz/ustaz_saifulah.png",
+          "saifulah": "img/ustaz/ustaz_saifulah.png",
+          "rasyidi": "img/ustaz/ustaz_rasyidi.jpg",
+          "najmi": "img/ustaz/ustaz_najmi.jpg",
+          "fendy": "img/ustaz/ustaz_fendy.png",
+          "elyas": "img/ustaz/ustaz_elyas.jpg",
+          "sirajuddin": "img/ustaz/ust_siraj.png",
+          "azihal": "img/ustaz/PU_Azihal.jpg",
+          "akram": "img/ustaz/pu_akram.jpg",
+          "abu zaki": "img/ustaz/dr-abu-zaki.jpg",
+          "khairatul": "img/ustaz/dr_khairatul.png",
+          "ramli": "img/ustaz/Hj_ramli.png",
+          "nik": "img/ustaz/ustaz_nik.png"
+        };
+
+        if (data.penceramah) {
+          const penceramahName = data.penceramah.toLowerCase();
+          for (const [nameKeyword, photoPath] of Object.entries(SPEAKER_PHOTOS)) {
+            if (penceramahName.includes(nameKeyword)) {
+              ustazPhotoHTML = `<img src="${photoPath}" class="lecturer-photo-brush" alt="${data.penceramah}">`;
+              break;
+            }
+          }
+        }
+
         const activityHTML = `
           <div class="activity-group ${data.is_batal ? 'cancelled' : ''}">
             <div class="activity-date">
@@ -448,6 +477,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="act-lead">${data.penceramah}</div>
                 ${data.nota ? `<div class="act-note" style="font-size: 0.9rem; color: #666; font-style: italic; margin-top: 4px;">${data.nota}</div>` : ""}
               </div>
+              ${ustazPhotoHTML}
               ${data.is_batal ? `<div class="batal-overlay"><img src="img/tangguh.png" alt="TANGGUH"></div>` : ""}
             </div>
           </div>
