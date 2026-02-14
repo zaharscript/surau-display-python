@@ -228,7 +228,8 @@ body {
 @media (min-width: 1025px) {
     .clock-section {
         flex: 1;
-        gap: 4vh;
+        gap: 2vh;
+        /* Reduced from 4vh */
         max-width: none;
     }
 }
@@ -585,21 +586,28 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.2vh 2vw;
-    background: rgba(255, 255, 255, 0.05);
-    border-left: 4px solid transparent;
-    border-radius: 8px;
+    padding: 1vh 2vw;
+    /* Reduced from 1.2vh */
+    background: var(--glass-bg);
+    /* Changed from rgba(255, 255, 255, 0.05) */
+    border: 1px solid var(--glass-border);
+    /* Changed from border-left only */
+    border-radius: 12px;
+    /* Increased from 8px */
+    backdrop-filter: blur(10px);
     transition: all 0.3s ease;
 }
 
 .prayer-card.active {
     background: var(--card-active);
-    border-left: 4px solid var(--primary-gold);
+    border: 1px solid var(--primary-gold);
+    /* Match next-prayer-card border */
     box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
 }
 
 .prayer-card.next {
-    border-left: 4px solid var(--accent-emerald);
+    border: 1px solid var(--accent-emerald);
+    /* Changed from border-left */
     background: rgba(16, 185, 129, 0.1);
 }
 
@@ -701,7 +709,8 @@ body {
         flex-direction: column;
         width: 100%;
         margin-top: 0;
-        gap: 1.5vh;
+        gap: 1vh;
+        /* Reduced from 1.5vh */
     }
 }
 

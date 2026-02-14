@@ -176,12 +176,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const nowMinutes = now.getHours() * 60 + now.getMinutes();
 
     const prayers = [
-      { name: "Fajr", time: prayerTimes.Fajr },
-      { name: "Syuruq", time: prayerTimes.Sunrise },
-      { name: "Dhuhr", time: prayerTimes.Dhuhr },
-      { name: "Asr", time: prayerTimes.Asr },
+      { name: "Subuh", time: prayerTimes.Fajr },
+      { name: "Terbit Matahari (Syuruq)", time: prayerTimes.Sunrise },
+      { name: "Zuhur", time: prayerTimes.Dhuhr },
+      { name: "Asar", time: prayerTimes.Asr },
       { name: "Maghrib", time: prayerTimes.Maghrib },
-      { name: "Isha", time: prayerTimes.Isha },
+      { name: "Isyak", time: prayerTimes.Isha },
     ];
 
     let nextPrayer = null;
@@ -230,9 +230,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Update Ticker
     if (nextPrayerTickerEl) {
       const tickerTime = formatTime12h(nextPrayer.time);
-      const prayerLabel =
-        nextPrayer.name === "Syuruq" ? "Syuruq" : nextPrayer.name;
-      nextPrayerTickerEl.textContent = `${prayerLabel} starts at ${tickerTime}${nextPrayer.isTomorrow ? " tomorrow" : ""
+      const prayerLabel = nextPrayer.name;
+      nextPrayerTickerEl.textContent = `${prayerLabel} bermula pada ${tickerTime}${nextPrayer.isTomorrow ? " esok" : ""
         }.`;
     }
   }
