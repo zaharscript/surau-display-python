@@ -266,7 +266,8 @@ body {
         flex: 1;
         gap: 2vh;
         /* Reduced from 4vh */
-        max-width: none;
+        max-width: 500px;
+        /* Constrained for kiosk mode */
     }
 }
 
@@ -277,7 +278,7 @@ body {
 }
 
 .digital-clock {
-    font-size: 5rem;
+    font-size: 2rem;
     /* Default mobile size */
     font-weight: 700;
     line-height: 1;
@@ -286,7 +287,7 @@ body {
 
 @media (min-width: 1025px) {
     .digital-clock {
-        font-size: 10rem;
+        font-size: 7rem;
     }
 }
 
