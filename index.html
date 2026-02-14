@@ -40,6 +40,9 @@
                 <button id="fullscreen-btn" class="fullscreen-btn" title="Toggle Fullscreen">
                     <i class="fa-solid fa-expand"></i>
                 </button>
+                <a href="ad_form.html" class="admin-btn" title="Urus Iklan">
+                    <i class="fa-solid fa-ad"></i> Urus Iklan
+                </a>
             </div>
         </header>
 
@@ -254,53 +257,10 @@
 
             <!-- Right Section: Advertisement & Info Images -->
             <div class="right-section">
-                <div class="advertisement">
-                    <!-- Ad 1: Halal Restaurant -->
-                    <div class="ad-slide ad1 active">
-                        <h3>🌟 Community Support 🌟</h3>
-                        <div class="ad-content">
-                            <div class="ad-highlight">Halal Restaurant & Catering</div>
-                            <div>Delicious Middle Eastern Cuisine</div>
-                            <div style="margin: 10px 0;">Special 15% Discount for Masjid Members</div>
-                            <div class="ad-contact">📞 Call: (555) 777-8888</div>
-                            <div class="ad-contact">🌐 www.halaldelights.com</div>
-                        </div>
-                    </div>
-
-                    <!-- Ad 2: Islamic School -->
-                    <div class="ad-slide ad2">
-                        <h3>📚 Islamic Education 📚</h3>
-                        <div class="ad-content">
-                            <div class="ad-highlight">Al-Iman Islamic School</div>
-                            <div>Quran, Arabic & Islamic Studies</div>
-                            <div style="margin: 10px 0;">Weekend Classes for Ages 5-15</div>
-                            <div style="margin: 8px 0;">Registration Now Open!</div>
-                            <div class="ad-contact">📞 (555) 888-9999</div>
-                        </div>
-                    </div>
-
-                    <!-- Ad 3: Hajj & Umrah Travel -->
-                    <div class="ad-slide ad3">
-                        <h3>✈️ Hajj & Umrah Services ✈️</h3>
-                        <div class="ad-content">
-                            <div class="ad-highlight">Sacred Journey Travel</div>
-                            <div>Premium Hajj & Umrah Packages</div>
-                            <div style="margin: 10px 0;">Early Bird Discount - Book Now!</div>
-                            <div style="margin: 8px 0;">Expert Guidance & VIP Services</div>
-                            <div class="ad-contact">📞 (555) 123-7777</div>
-                        </div>
-                    </div>
-
-                    <!-- Ad 4: Islamic Bookstore -->
-                    <div class="ad-slide ad4">
-                        <h3>📖 Knowledge Corner 📖</h3>
-                        <div class="ad-content">
-                            <div class="ad-highlight">Kedai buku Nur Islam</div>
-                            <div>Qurans, Books, Prayer Items & Gifts</div>
-                            <div style="margin: 10px 0;">20% OFF All Islamic Books This Month</div>
-                            <div class="ad-contact">📍 Next to Masjid Parking</div>
-                            <div class="ad-contact">📞 (555) 456-7890</div>
-                        </div>
+                <div class="advertisement" id="ad-container">
+                    <!-- Advertisements will be loaded dynamically from Firestore -->
+                    <div class="loading-ads" style="text-align: center; color: var(--text-dim); padding: 2rem;">
+                        <i class="fas fa-circle-notch fa-spin"></i> Memuatkan Iklan...
                     </div>
                 </div>
 

@@ -326,27 +326,73 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function initAdRotator() {
-    const slides = document.querySelectorAll(".ad-slide");
-    if (slides.length === 0) return;
+    const adContainer = document.getElementById("ad-container");
+    if (!adContainer) return;
 
     let currentSlide = 0;
-    const slideInterval = 4000; // 4 seconds
+    let slides = [];
+    let rotatorInterval = null;
 
-    // Ensure first slide is active
-    slides.forEach((slide, index) => {
-      if (index === 0) {
-        slide.classList.add("active");
+    // Listen for real-time updates to advertisements
+    const q = query(
+      collection(db, "advertisements"),
+      orderBy("createdAt", "desc")
+    );
+
+    onSnapshot(q, (snapshot) => {
+      // Clear container
+      adContainer.innerHTML = "";
+      slides = [];
+
+      if (snapshot.empty) {
+        adContainer.innerHTML =
+          '<div style="text-align: center; color: var(--text-dim); padding: 2rem;">Tiada iklan aktif.</div>';
+        if (rotatorInterval) clearInterval(rotatorInterval);
+        return;
+      }
+
+      snapshot.forEach((doc, index) => {
+        const data = doc.data();
+        const slide = document.createElement("div");
+        slide.className = `ad-slide ad${index + 1}`;
+        if (index === 0) slide.classList.add("active");
+
+        slide.innerHTML = `
+          <h3>${data.header}</h3>
+          <div class="ad-content">
+            <div class="ad-highlight">${data.highlight}</div>
+            <div>${data.line1}</div>
+            ${data.line2 ? `<div style="margin: 10px 0;">${data.line2}</div>` : ""}
+            ${data.contact1 ? `<div class="ad-contact">${data.contact1}</div>` : ""}
+            ${data.contact2 ? `<div class="ad-contact">${data.contact2}</div>` : ""}
+          </div>
+        `;
+        adContainer.appendChild(slide);
+        slides.push(slide);
+      });
+
+      // Restart rotator if multiple slides exist
+      if (slides.length > 1) {
+        startRotator();
       } else {
-        slide.classList.remove("active", "exit");
+        if (rotatorInterval) clearInterval(rotatorInterval);
       }
     });
 
-    setInterval(() => {
-      // Current slide exits
-      if (slides[currentSlide]) {
-        slides[currentSlide].classList.remove("active");
-        slides[currentSlide].classList.add("exit");
-        const prevSlide = currentSlide;
+    function startRotator() {
+      if (rotatorInterval) clearInterval(rotatorInterval);
+      currentSlide = 0;
+      const slideInterval = 5000; // 5 seconds
+
+      rotatorInterval = setInterval(() => {
+        if (slides.length <= 1) return;
+
+        // Current slide exits
+        const prevIndex = currentSlide;
+        slides[prevIndex].classList.remove("active");
+        slides[prevIndex].classList.add("exit");
+
+        // Increment index
         currentSlide = (currentSlide + 1) % slides.length;
 
         // Next slide enters
@@ -355,10 +401,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Reset previous slide after transition
         setTimeout(() => {
-          slides[prevSlide].classList.remove("exit");
-        }, 800); // Matches transition duration
-      }
-    }, slideInterval);
+          if (slides[prevIndex]) slides[prevIndex].classList.remove("exit");
+        }, 800);
+      }, slideInterval);
+    }
   }
 
   function loadActivities() {

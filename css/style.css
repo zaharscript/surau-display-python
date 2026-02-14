@@ -196,22 +196,40 @@ body {
 }
 
 .fullscreen-btn {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--glass-bg);
     border: 1px solid var(--glass-border);
-    color: var(--text-dim);
-    padding: 0.5rem;
-    border-radius: 8px;
+    color: var(--text-light);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: all 0.3s ease;
-    margin-left: 1rem;
-    opacity: 0.3;
-    /* Subtle by default */
 }
 
-.fullscreen-btn:hover {
-    opacity: 1;
-    background: var(--card-active);
-    color: var(--primary-gold);
+.admin-btn {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text-light);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    margin-left: 0.5rem;
+}
+
+.fullscreen-btn:hover,
+.admin-btn:hover {
+    background: var(--primary-blue);
+    color: white;
+    transform: scale(1.1);
 }
 
 @media (max-width: 1024px) {
