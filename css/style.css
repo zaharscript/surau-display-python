@@ -56,8 +56,18 @@ body {
     .display-container {
         height: 100vh;
         padding: 5vh 5vw;
-        /* TV Safe Area */
+        /* TV Safe Area / Overscan Protection */
+        overflow: hidden;
     }
+}
+
+/* Cursor Auto-hide */
+.hide-cursor {
+    cursor: none !important;
+}
+
+.hide-cursor * {
+    cursor: none !important;
 }
 
 .bg-overlay {
@@ -183,6 +193,32 @@ body {
     font-family: var(--font-heading);
     font-size: 1.1rem;
     color: var(--primary-gold);
+}
+
+.fullscreen-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--glass-border);
+    color: var(--text-dim);
+    padding: 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 1rem;
+    opacity: 0.3;
+    /* Subtle by default */
+}
+
+.fullscreen-btn:hover {
+    opacity: 1;
+    background: var(--card-active);
+    color: var(--primary-gold);
+}
+
+@media (max-width: 1024px) {
+    .fullscreen-btn {
+        display: none;
+        /* Hide on mobile/tablets where fullscreen is different */
+    }
 }
 
 @media (min-width: 1025px) {

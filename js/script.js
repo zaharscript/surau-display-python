@@ -43,6 +43,57 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Initialize Dynamic Activities
     loadActivities();
+
+    // setup TV enhancements
+    setupTVOptimization();
+  }
+
+  function setupTVOptimization() {
+    const fsBtn = document.getElementById("fullscreen-btn");
+    let cursorTimeout;
+
+    // 1. Fullscreen Toggle Function
+    const toggleFullscreen = () => {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch((err) => {
+          console.error(`Error attempting to enable fullscreen: ${err.message}`);
+        });
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    };
+
+    // 2. Button Listener
+    if (fsBtn) {
+      fsBtn.addEventListener("click", toggleFullscreen);
+    }
+
+    // 3. Keyboard Shortcut 'F'
+    document.addEventListener("keydown", (e) => {
+      if (e.key.toLowerCase() === "f") {
+        toggleFullscreen();
+      }
+    });
+
+    // 4. Cursor Auto-hide Logic
+    const hideCursor = () => {
+      document.body.classList.add("hide-cursor");
+    };
+
+    const showCursor = () => {
+      document.body.classList.remove("hide-cursor");
+      clearTimeout(cursorTimeout);
+      cursorTimeout = setTimeout(hideCursor, 5000); // Hide after 5 seconds of inactivity
+    };
+
+    // Listen for mouse movement
+    document.addEventListener("mousemove", showCursor);
+    document.addEventListener("mousedown", showCursor);
+
+    // Initial timeout
+    cursorTimeout = setTimeout(hideCursor, 5000);
   }
 
   function updateClock() {
