@@ -522,8 +522,14 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         }
 
+        // Logic to check if activity is done (date before today)
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const activityDate = new Date(data.tarikh);
+        const isDone = activityDate < today;
+
         const activityHTML = `
-          <div class="activity-group ${data.is_batal ? 'cancelled' : ''}">
+          <div class="activity-group ${data.is_batal ? 'cancelled' : ''} ${isDone ? 'done' : ''}">
             <div class="activity-date">
               <span class="day-badge">${data.hari}</span>
               <span class="date-text">${data.tarikh}</span>

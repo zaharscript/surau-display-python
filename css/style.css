@@ -1125,6 +1125,13 @@ body {
     border-left-color: #94a3b8;
 }
 
+.activity-group.done {
+    filter: grayscale(100%) brightness(0.5);
+    opacity: 0.3;
+    pointer-events: none;
+    border-left-color: #2d3748;
+}
+
 .activity-group.cancelled .act-title,
 .activity-group.cancelled .act-lead,
 .activity-group.cancelled .act-note {
