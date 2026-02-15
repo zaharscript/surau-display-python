@@ -124,14 +124,16 @@ body {
 }
 
 .mosque-logo {
-    height: 60px;
+    height: 100px;
     width: auto;
     border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
 }
 
 @media (min-width: 1025px) {
     .mosque-logo {
-        height: 80px;
+        height: 200px;
     }
 }
 
@@ -553,6 +555,55 @@ body {
     position: relative;
     /* Reduced padding as photo is now inline */
     padding-right: 1rem;
+}
+
+.side-img-slider {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    /* Lock ratio to common poster size or let content decide */
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+}
+
+.poster-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.poster-slide.active {
+    opacity: 1;
+    transform: translateX(0);
+    z-index: 2;
+}
+
+.poster-slide.exit {
+    opacity: 0;
+    transform: translateX(-100%);
+    z-index: 1;
+}
+
+.side-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensures all posters fill the same size box */
+    border-radius: 15px;
+    display: block;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
 .group-ustaz-img {

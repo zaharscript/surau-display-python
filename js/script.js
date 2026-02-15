@@ -44,8 +44,62 @@ document.addEventListener("DOMContentLoaded", () => {
     // Initialize Dynamic Activities
     loadActivities();
 
-    // setup TV enhancements
+    // Kiosk optimizations
     setupTVOptimization();
+
+    // Start Poster Slider
+    setupPosterSlider();
+  }
+
+  // Poster Slider Logic
+  function setupPosterSlider() {
+    const sliderWrapper = document.getElementById('poster-slider');
+    const posters = [
+      "img/surau_poster/Ramadhan_takwim.jpeg",
+      "img/surau_poster/gotong_royong.jpeg",
+      "img/surau_poster/ihya_ramadan.jpeg",
+      "img/surau_poster/ustaz_rozie.jpeg",
+      "img/surau_qr.jpeg"
+    ];
+
+    if (!sliderWrapper) return;
+
+    // Clear old container if exists and create new structure
+    sliderWrapper.innerHTML = '';
+    const slides = posters.map((src, index) => {
+      const slide = document.createElement('div');
+      slide.className = `poster-slide ${index === 0 ? 'active' : ''}`;
+      slide.innerHTML = `<img src="${src}" class="side-img" alt="Poster">`;
+      sliderWrapper.appendChild(slide);
+      return slide;
+    });
+
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+
+    function nextSlide() {
+      const currentSlide = slides[currentIndex];
+      currentIndex = (currentIndex + 1) % totalSlides;
+      const nextSlide = slides[currentIndex];
+
+      // Transition: current slide exits to the left
+      currentSlide.classList.remove('active');
+      currentSlide.classList.add('exit');
+
+      // Next slide becomes active and enters from the right
+      nextSlide.classList.remove('exit');
+      nextSlide.classList.add('active');
+
+      // Clean up exit class after transition
+      setTimeout(() => {
+        slides.forEach((s, idx) => {
+          if (idx !== currentIndex) s.classList.remove('exit');
+        });
+      }, 1500); // Match CSS transition duration
+    }
+
+    // Change every 60 seconds (1 minute)
+    setInterval(nextSlide, 60000);
   }
 
   function setupTVOptimization() {
@@ -453,7 +507,9 @@ document.addEventListener("DOMContentLoaded", () => {
           "ramli": "img/ustaz/Hj_ramli.png",
           "nik": "img/ustaz/ustaz_nik.png",
           "rozie": "img/ustaz/ustaz_rozie.png",
-          "kosi": "img/ustaz/ustaz_kosi.png"
+          "kosi": "img/ustaz/ustaz_kosi.png",
+          "izzat": "img/ustaz/pu_izzat.png",
+          "syawal": "img/ustaz/ustaz_syawal.png"
         };
 
         if (data.penceramah) {
