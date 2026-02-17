@@ -43,11 +43,12 @@ onAuthStateChanged(auth, (user) => {
         // User is logged in
         // console.log("User logged in:", user.email);
 
-        // Show protected elements if they have a specific class (optional enhancement)
+        // Show protected elements, hide guest elements
         document.querySelectorAll(".admin-only").forEach(el => el.style.display = "block");
+        document.querySelectorAll(".guest-only").forEach(el => el.style.display = "none");
 
         if (currentPage === "login.html") {
-            window.location.href = protectedPages[0]; // Redirect away from login if already logged in
+            window.location.href = "index.html";
         }
     } else {
         // User is logged out
@@ -55,7 +56,9 @@ onAuthStateChanged(auth, (user) => {
             window.location.href = "login.html";
         }
 
+        // Hide protected elements, show guest elements
         document.querySelectorAll(".admin-only").forEach(el => el.style.display = "none");
+        document.querySelectorAll(".guest-only").forEach(el => el.style.display = "block");
     }
 });
 
