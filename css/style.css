@@ -741,14 +741,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1vh 1vw;
-    /* Reduced from 1.2vh */
-    background: var(--glass-bg);
-    /* Changed from rgba(255, 255, 255, 0.05) */
-    border: 1px solid var(--glass-border);
-    /* Changed from border-left only */
-    border-radius: 12px;
-    /* Increased from 8px */
+    padding: 1.2vh 1.5vw;
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 4px solid var(--primary-gold);
+    border-radius: 10px;
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
 }
@@ -772,7 +768,7 @@ body {
 }
 
 .prayer-name-en {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 600;
 }
 
@@ -788,7 +784,7 @@ body {
 }
 
 .prayer-time {
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: 700;
 }
 
@@ -842,19 +838,54 @@ body {
     margin-right: 0.5rem;
 }
 
-/* Right: Prayer Times List */
-.prayer-times-section {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 0.8rem;
-    width: 100%;
-    margin-top: 1rem;
-}
-
-@media (max-width: 480px) {
+/* Mobile Prayer List Styles */
+@media (max-width: 1024px) {
     .prayer-times-section {
-        grid-template-columns: 1fr 1fr;
-        /* Two columns on very small screens */
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        width: 100%;
+        height: auto;
+        padding: 1.5rem;
+        background: var(--glass-bg);
+        border: 1px solid var(--primary-gold);
+    }
+
+    .prayer-card {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1.8rem;
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        border-radius: 24px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .prayer-card.active {
+        border-color: var(--primary-gold);
+    }
+
+    .prayer-info {
+        margin-bottom: 0.8rem;
+    }
+
+    .prayer-name-en {
+        font-size: 1.3rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--primary-gold);
+    }
+
+    .prayer-time {
+        font-size: 2.8rem;
+        font-family: monospace;
+    }
+
+    .iqamah-time {
+        font-size: 1.1rem;
+        margin-top: 0.8rem;
     }
 }
 
