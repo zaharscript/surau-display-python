@@ -375,7 +375,7 @@ body {
     max-width: 600px;
     margin: 0 auto;
     height: auto;
-    min-height: 220px;
+    min-height: 320px;
     background: rgba(255, 255, 255, 0.85);
     border: 1px solid var(--primary-gold);
     border-radius: 20px;
