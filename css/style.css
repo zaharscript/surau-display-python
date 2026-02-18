@@ -366,7 +366,7 @@ body {
 .right-section {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 3rem;
     width: 100%;
 }
 
