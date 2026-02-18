@@ -379,6 +379,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // return `${hour}:${m} ${ampm}`; // removed ampm for cleaner list look
   }
 
+  function formatDateDDMMYYYY(dateString) {
+    if (!dateString) return "";
+    const [year, month, day] = dateString.split("-");
+    return `${day}-${month}-${year}`;
+  }
+
   function initAdRotator() {
     const adContainer = document.getElementById("ad-container");
     if (!adContainer) return;
@@ -532,7 +538,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="activity-group ${data.is_batal ? 'cancelled' : ''} ${isDone ? 'done' : ''}">
             <div class="activity-date">
               <span class="day-badge">${data.hari}</span>
-              <span class="date-text">${data.tarikh}</span>
+              <span class="date-text">${formatDateDDMMYYYY(data.tarikh)}</span>
             </div>
   
             <div class="activity-item">
@@ -581,8 +587,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Format the long date for display
         const dateObj = new Date(date);
-        const options = { year: "numeric", month: "long", day: "numeric" };
-        const formattedDate = dateObj.toLocaleDateString("ms-MY", options);
+        const formattedDate = formatDateDDMMYYYY(date);
 
         // Use image from first activity in group or default
         const imageSrc = acts[0].imageData || "img/ustaz/ustaz.png";

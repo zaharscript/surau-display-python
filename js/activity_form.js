@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
       item.innerHTML = `
         <div class="activity-info">
           <h4>${data.tajuk}</h4>
-          <p><strong>Tarikh:</strong> ${data.tarikh} (${data.hari})</p>
+          <p><strong>Tarikh:</strong> ${formatDateDDMMYYYY(data.tarikh)} (${data.hari})</p>
           <p><strong>Masa:</strong> ${data.masa || "-"}</p>
           <p><strong>Penceramah:</strong> ${data.penceramah}</p>
           ${data.nota ? `<p><strong>Nota:</strong> ${data.nota}</p>` : ""}
