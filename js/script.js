@@ -101,7 +101,8 @@ document.addEventListener("DOMContentLoaded", () => {
       "img/surau_poster/gotong_royong.jpeg",
       "img/surau_poster/ihya_ramadan.jpeg",
       "img/surau_poster/ustaz_rozie.jpeg",
-      "img/surau_qr.jpeg"
+      "img/surau_qr.jpeg",
+      "IMG-20260225-WA0007.jpg"
     ];
 
     if (!sliderWrapper) return;
