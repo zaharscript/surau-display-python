@@ -810,13 +810,13 @@ body {
 
 /* Footer */
 .main-footer {
-    margin-top: 1vh;
+    margin-top: 2vh;
     border-top: 1px solid var(--glass-border);
-    padding-top: 0.5vh;
+    padding-top: 1.5vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 .ticker-wrap {
