@@ -55,8 +55,8 @@ body {
 @media (min-width: 1025px) {
     .display-container {
         height: 100vh;
-        padding: 5vh 5vw 8vh 5vw;
-        /* Increased bottom padding for TV overscan */
+        padding: 5vh 5vw 4vh 5vw;
+        /* Adjusted bottom padding to lower the footer */
         overflow: hidden;
     }
 }
@@ -266,7 +266,7 @@ body {
     .main-content {
         flex-direction: row;
         flex: 1;
-        gap: 3vw;
+        gap: 1.5vw;
         height: 0;
         /* Allow flex children to scroll independently if needed */
         overflow: hidden;
@@ -393,18 +393,19 @@ body {
 
 @media (min-width: 1025px) {
     .right-section {
-        flex: 1;
+        flex: 1.4;
         display: flex;
         flex-direction: column;
         gap: 2vh;
-        max-width: 420px;
+        max-width: 520px;
         width: 100%;
     }
 
     .advertisement {
         width: 100%;
-        height: 80px;
+        height: 120px;
         margin: 0;
+        flex-shrink: 0;
     }
 }
 
@@ -580,6 +581,13 @@ body {
     min-height: 400px;
     display: flex;
     align-items: center;
+}
+
+@media (min-width: 1025px) {
+    .side-img-slider {
+        flex: 1;
+        min-height: 0;
+    }
 }
 
 .poster-slide {
@@ -810,14 +818,14 @@ body {
 
 /* Footer */
 .main-footer {
-    margin-top: 2vh;
+    margin-top: 1vh;
     border-top: 1px solid var(--glass-border);
-    padding-top: 2vh;
-    padding-bottom: 2vh;
+    padding-top: 1.5vh;
+    padding-bottom: 1vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 2rem;
+    font-size: 2.4rem;
 }
 
 .ticker-wrap {
@@ -1034,7 +1042,7 @@ body {
 .ad-slide h3 {
     font-family: var(--font-heading);
     color: #8B0000;
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     margin-bottom: 0.5rem;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -1042,14 +1050,14 @@ body {
 }
 
 .ad-content {
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 500;
     color: #1a202c;
     line-height: 1.4;
 }
 
 .ad-highlight {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     font-weight: 800;
     color: var(--primary-blue);
     margin-bottom: 0.3rem;
@@ -1059,7 +1067,7 @@ body {
     font-weight: 700;
     color: #B91C1C;
     margin-top: 0.3rem;
-    font-size: 1.1rem;
+    font-size: 1.4rem;
 }
 
 /* Update Pulse Animation */

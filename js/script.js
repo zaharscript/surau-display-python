@@ -100,9 +100,9 @@ document.addEventListener("DOMContentLoaded", () => {
       "img/surau_poster/Ramadhan_takwim.jpeg",
       "img/surau_poster/gotong_royong.jpeg",
       "img/surau_poster/ihya_ramadan.jpeg",
+      "img/surau_poster/nasihat.jpg",
       "img/surau_poster/ustaz_rozie.jpeg",
-      "img/surau_qr.jpeg",
-      "IMG-20260225-WA0007.jpg"
+      "img/surau_qr.jpeg"
     ];
 
     if (!sliderWrapper) return;
@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Change every 60 seconds (1 minute)
-    setInterval(nextSlide, 60000);
+    setInterval(nextSlide, 10000);
   }
 
   function initAdRotator() {
