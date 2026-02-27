@@ -55,8 +55,8 @@ body {
 @media (min-width: 1025px) {
     .display-container {
         height: 100vh;
-        padding: 2vh 5vw;
-        /* TV Safe Area / Overscan Protection */
+        padding: 5vh 5vw 8vh 5vw;
+        /* Increased bottom padding for TV overscan */
         overflow: hidden;
     }
 }
@@ -812,7 +812,8 @@ body {
 .main-footer {
     margin-top: 2vh;
     border-top: 1px solid var(--glass-border);
-    padding-top: 1.5vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
