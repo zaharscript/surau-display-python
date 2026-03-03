@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "img/surau_poster/Ramadhan_takwim.jpeg",
       "img/surau_poster/gotong_royong.jpeg",
       "img/surau_poster/ihya_ramadan.jpeg",
-      "img/surau_poster/nasihat.jpg",
+      "img/surau_poster/nasihat.jpeg",
       "img/surau_poster/ustaz_rozie.jpeg",
       "img/surau_qr.jpeg"
     ];
