@@ -629,14 +629,16 @@ document.addEventListener("DOMContentLoaded", () => {
           "rozie": "img/ustaz/ustaz_rozie.png",
           "kosi": "img/ustaz/ustaz_kosi.png",
           "izzat": "img/ustaz/pu_izzat.png",
-          "syawal": "img/ustaz/ustaz_syawal.png"
+          "syawal": "img/ustaz/ustaz_syawal.png",
+          "yasin": "img/ustaz/yassin.jpg",
+          "yassin": "img/ustaz/yassin.jpg"
         };
 
-        if (data.penceramah) {
-          const penceramahName = data.penceramah.toLowerCase();
+        if (data.penceramah || data.tajuk) {
+          const searchStr = `${data.penceramah || ""} ${data.tajuk || ""}`.toLowerCase();
           for (const [nameKeyword, photoPath] of Object.entries(SPEAKER_PHOTOS)) {
-            if (penceramahName.includes(nameKeyword)) {
-              ustazPhotoHTML = `<img src="${photoPath}" class="lecturer-photo-brush" alt="${data.penceramah}">`;
+            if (searchStr.includes(nameKeyword)) {
+              ustazPhotoHTML = `<img src="${photoPath}" class="lecturer-photo-brush" alt="Speaker">`;
               break;
             }
           }
