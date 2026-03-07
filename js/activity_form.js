@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
           updatedAt: serverTimestamp()
         });
         updateSyncStatus(true);
-        window.location.href = "index.html"; // Redirect to main display
+        // Page remains on form as per user request
       } catch (error) {
         console.error("Error toggling batal status:", error);
         updateSyncStatus(false, true);
@@ -200,6 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
     activityForm.reset();
     editIdInput.value = "";
     hariDisp.textContent = "-";
+    submitBtn.disabled = false;
     submitBtn.textContent = "Daftar Aktiviti";
     submitBtn.style.backgroundColor = ""; // Reset to CSS default
     submitBtn.style.color = "";
@@ -252,7 +253,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Success feedback
         updateSyncStatus(true);
         alert("Aktiviti berjaya didaftarkan!");
-        window.location.href = "index.html"; // Redirect to main display
+        resetForm();
       }
     } catch (error) {
       console.error("Error saving activity:", error);
